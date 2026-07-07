@@ -1,5 +1,6 @@
 - 入门
   - [首页](README.md)
+  - [种族天赋表](race-talents.md)
   - [快速开始](quickstart.md)
 - 更多
   - [关于](about.md)
