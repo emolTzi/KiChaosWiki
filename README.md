@@ -3,3 +3,32 @@ KiChaosWiki
 # 欢迎来到奇沌龙珠的Wiki
 
 这里这里有相关奇沌龙珠的芝士，持续更新中……
+
+# 🐉 龙珠种族天赋 Wiki
+
+欢迎来到我的龙珠种族天赋知识库！点击下方链接快速跳转至各分支页面。
+
+## 📋 基础属性
+- [基础属性评级](race/overview.md)
+
+## ⚡ 赛亚人
+- [赛亚人血脉](race/saiyan/血脉.md)
+- [超级赛亚人](race/saiyan/超级赛亚人.md)
+- [原始赛亚人](race/saiyan/原始赛亚人.md)
+- [赛亚人之神](race/saiyan/赛亚人之神.md)
+- [神之赛亚人](race/saiyan/神之赛亚人.md)
+
+## 👤 人类
+- [人类路线](race/human/人类路线.md)
+- [人造人路线](race/human/人造人路线.md)
+
+## 👽 弗利萨
+- [白金](race/frieza/白金.md)
+- [黑金](race/frieza/黑金.md)
+
+## 🍬 魔人
+- [恶魔](race/majin/恶魔.md)
+
+## 🌿 那美克
+- [神龙](race/namek/神龙.md)
+- [孽龙](race/namek/孽龙.md)
