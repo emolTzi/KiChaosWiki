@@ -12,7 +12,7 @@ KiChaosWiki
 - [基础属性评级](Wiki/race/overview.md)
 
 ## ⚡ 赛亚人
-- [赛亚人血脉](Wiki/race/saiyan/血脉.md)
+- [赛亚人血脉](Wiki/race/saiyan/赛亚人血脉.md)
 - [超级赛亚人](Wiki/race/saiyan/超级赛亚人.md)
 - [原始赛亚人](Wiki/race/saiyan/原始赛亚人.md)
 - [赛亚人之神](Wiki/race/saiyan/赛亚人之神.md)
