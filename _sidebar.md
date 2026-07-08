@@ -1,5 +1,7 @@
 - 首页
   - [欢迎](README.md)
+- ⚔️ 装备
+  - [气武器](Wiki/KiWeapons/气武器.md)
 - 种族天赋
   - [基础属性评级](Wiki/race/overview.md)
   - 赛亚人
