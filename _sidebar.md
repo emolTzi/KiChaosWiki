@@ -20,3 +20,8 @@
   - 那美克
     - [神龙](Wiki/race/namek/神龙.md)
     - [孽龙](Wiki/race/namek/孽龙.md)
+- 装备
+  - [套装效果](Wiki/装备/套装效果.md)
+  - [装备强化](Wiki/装备/装备强化.md)
+  - [称号分类](Wiki/装备/称号分类.md)
+  - [VIP礼包](Wiki/装备/VIP礼包.md)
