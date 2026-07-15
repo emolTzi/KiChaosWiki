@@ -1,0 +1,177 @@
+:root {
+  --vp-c-orange-1: #c2410c;
+  --vp-c-orange-2: #ea580c;
+  --vp-c-orange-3: #f97316;
+  --vp-c-orange-soft: rgba(234, 88, 12, 0.14);
+
+  --vp-c-blue-1: #1d4ed8;
+  --vp-c-blue-2: #2563eb;
+  --vp-c-blue-3: #3b82f6;
+  --vp-c-blue-soft: rgba(37, 99, 235, 0.14);
+
+  --vp-c-gold-1: #a16207;
+  --vp-c-gold-2: #ca8a04;
+  --vp-c-gold-3: #eab308;
+  --vp-c-gold-soft: rgba(234, 179, 8, 0.14);
+
+  --vp-c-brand-1: var(--vp-c-orange-1);
+  --vp-c-brand-2: var(--vp-c-orange-2);
+  --vp-c-brand-3: var(--vp-c-orange-3);
+  --vp-c-brand-soft: var(--vp-c-orange-soft);
+
+  --vp-c-tip-1: var(--vp-c-gold-1);
+  --vp-c-tip-2: var(--vp-c-gold-2);
+  --vp-c-tip-3: var(--vp-c-gold-3);
+  --vp-c-tip-soft: var(--vp-c-gold-soft);
+
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(120deg, #e85500 10%, #f97316 40%, #eab308 70%, #f59e0b);
+
+  --vp-home-hero-image-background-image: linear-gradient(-45deg, #e85500 30%, #2563eb 70%);
+  --vp-home-hero-image-filter: blur(72px);
+
+  --vp-button-brand-border: transparent;
+  --vp-button-brand-text: #ffffff;
+  --vp-button-brand-bg: var(--vp-c-orange-3);
+  --vp-button-brand-hover-border: transparent;
+  --vp-button-brand-hover-text: #ffffff;
+  --vp-button-brand-hover-bg: var(--vp-c-orange-2);
+  --vp-button-brand-active-border: transparent;
+  --vp-button-brand-active-text: #ffffff;
+  --vp-button-brand-active-bg: var(--vp-c-orange-1);
+}
+
+.dark {
+  --vp-c-brand-1: var(--vp-c-orange-3);
+  --vp-c-brand-2: var(--vp-c-orange-2);
+  --vp-c-brand-3: var(--vp-c-orange-1);
+  --vp-c-brand-soft: rgba(249, 115, 22, 0.16);
+
+  --vp-c-tip-1: var(--vp-c-gold-3);
+  --vp-c-tip-2: var(--vp-c-gold-2);
+  --vp-c-tip-3: var(--vp-c-gold-1);
+  --vp-c-tip-soft: rgba(234, 179, 8, 0.16);
+}
+
+:root {
+  --vp-font-family-base:
+    'Inter', 'Inter4CJK', -apple-system, BlinkMacSystemFont,
+    'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --vp-font-family-mono:
+    ui-monospace, 'JetBrains Mono', 'Menlo', 'Monaco', 'Consolas',
+    'Liberation Mono', 'Courier New', monospace;
+}
+
+:root {
+  --vp-sidebar-width: 280px;
+  --vp-nav-height: 56px;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+th {
+  background: var(--vp-c-brand-3);
+  color: #ffffff;
+  font-weight: 600;
+  padding: 10px 14px;
+  font-size: 0.85em;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+.dark th {
+  background: var(--vp-c-brand-1);
+}
+
+td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--vp-c-divider);
+  text-align: center;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background: var(--vp-c-brand-soft);
+}
+
+.vp-doc h2 {
+  margin-top: 48px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--vp-c-brand-soft);
+}
+
+.vp-doc h2:first-child {
+  margin-top: 0;
+}
+
+.vp-doc h3 {
+  margin-top: 32px;
+}
+
+.vp-doc p {
+  line-height: 1.8;
+}
+
+:root {
+  --vp-custom-block-tip-border: var(--vp-c-gold-2);
+  --vp-custom-block-tip-text: var(--vp-c-text-1);
+  --vp-custom-block-tip-bg: var(--vp-c-gold-soft);
+}
+
+.vp-doc blockquote {
+  border-left: 4px solid var(--vp-c-brand-3);
+  background: var(--vp-c-brand-soft);
+  border-radius: 0 6px 6px 0;
+  padding: 8px 16px;
+  margin: 16px 0;
+}
+
+.vp-doc blockquote p {
+  margin: 0;
+}
+
+.vp-doc a {
+  font-weight: 500;
+}
+
+.vp-doc hr {
+  margin: 40px 0;
+  border-color: var(--vp-c-divider);
+}
+
+@media (min-width: 960px) {
+  .VPSidebar {
+    padding-top: 8px !important;
+  }
+}
+
+.VPSidebarItem.level-0 > .item > .text {
+  font-weight: 700;
+  font-size: 0.9em;
+  letter-spacing: 0.02em;
+}
+
+.VPSidebarItem.level-1 > .item > .text {
+  font-size: 0.85em;
+}
+
+.group + .group {
+  border-top: 1px solid var(--vp-c-divider);
+  padding-top: 16px;
+  margin-top: 16px;
+}
+
+.VPNavBar .title {
+  font-weight: 700;
+  font-size: 1.1em;
+}

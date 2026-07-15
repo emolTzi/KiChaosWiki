@@ -1,0 +1,14 @@
+{
+  "name": "kichaoswiki",
+  "version": "2.0.0",
+  "description": "奇沌龙珠 Wiki - 龙珠 Minecraft 服务器百科全书",
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "vitepress": "^2.0.0-alpha.18"
+  }
+}
