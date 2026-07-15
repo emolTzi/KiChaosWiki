@@ -11,6 +11,16 @@ defineProps<{
   }
   solo?: string
 }>()
+
+/** Colorize numbers in text with the same scheme as the wiki-wide plugin. */
+function colorize(text: string): string {
+  return text
+    .replace(/(\d+(?:\.\d+)?%)/g, '<span class="kn-pct">$1</span>')
+    .replace(/(\d+)分钟/g, '<span class="kn-time">$1分钟</span>')
+    .replace(/(\d+)秒/g, '<span class="kn-time">$1秒</span>')
+    .replace(/(\d+)s/g, '<span class="kn-time">$1s</span>')
+    .replace(/([+＋]?)(\d+(?:\.\d+)?w)/g, '$1<span class="kn-resource">$2</span>')
+}
 </script>
 
 <template>
@@ -19,17 +29,17 @@ defineProps<{
 
     <div v-if="solo" class="set-piece solo">
       <span class="piece-label">单件效果</span>
-      <span class="piece-desc">{{ solo }}</span>
+      <span class="piece-desc" v-html="colorize(solo)"></span>
     </div>
 
     <div v-for="(effect, idx) in effects" :key="idx" class="set-piece">
       <span class="piece-label">{{ effect.pieces || '效果' }}</span>
-      <span class="piece-desc">{{ effect.description }}</span>
+      <span class="piece-desc" v-html="colorize(effect.description)"></span>
     </div>
 
     <div v-if="skill" class="set-skill">
       <div class="skill-header">{{ skill.name || '技能' }}</div>
-      <div class="skill-desc">{{ skill.description }}</div>
+      <div class="skill-desc" v-html="colorize(skill.description)"></div>
     </div>
   </div>
 </template>

@@ -1,4 +1,5 @@
 ﻿import { defineConfig } from 'vitepress'
+import wikiNumberPlugin from './plugins/wiki-numbers.js'
 
 const raceSidebar = [
   { text: '基础评级', link: '/Wiki/overview' },
@@ -61,6 +62,12 @@ export default defineConfig({
   lastUpdated: true,
   cleanUrls: true,
   metaChunk: true,
+
+  markdown: {
+    config(md) {
+      md.use(wikiNumberPlugin)
+    },
+  },
 
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],

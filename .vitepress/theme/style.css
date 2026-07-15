@@ -1020,3 +1020,97 @@ td[data-grade="d"] {
     min-width: 800px;
   }
 }
+
+/* --------------------------------------------------------------------------
+   24. Wiki Number Highlighting — Auto-colored values throughout content
+   -------------------------------------------------------------------------- */
+
+/* 🟠 Core combat stats — plugin-generated */
+.kn-stat {
+  color: var(--vp-c-orange-3);
+  font-weight: 600;
+}
+
+.dark .kn-stat {
+  color: var(--vp-c-orange-4);
+}
+
+/* 🟠 Core combat stats — race stat table columns
+   Race tables: [形态名称 | 力量加成 | 灵巧加成 | 意志加成 | 形态消耗 | 天赋]
+   Columns 2-4 (力量/灵巧/意志) are pure number cells.
+   Target via page-level class prefix _Wiki_race_ so it doesn't leak
+   into KiWeapons (气武器) or 装备 pages. */
+[class*="_Wiki_race_"] table td:nth-child(2),
+[class*="_Wiki_race_"] table td:nth-child(3),
+[class*="_Wiki_race_"] table td:nth-child(4) {
+  color: var(--vp-c-orange-3);
+  font-weight: 600;
+  font-size: 1.05em;
+}
+
+.dark [class*="_Wiki_race_"] table td:nth-child(2),
+.dark [class*="_Wiki_race_"] table td:nth-child(3),
+.dark [class*="_Wiki_race_"] table td:nth-child(4) {
+  color: var(--vp-c-orange-4);
+}
+
+/* 🟢 Percentage gains (提高 X%) */
+.kn-pct {
+  color: var(--vp-c-green-2);
+  font-weight: 600;
+}
+
+.dark .kn-pct {
+  color: var(--vp-c-green-3);
+}
+
+/* 🔵 Health/energy resources (血量/气/耐力/生命上限) */
+.kn-resource {
+  color: var(--vp-c-blue-3);
+  font-weight: 600;
+}
+
+.dark .kn-resource {
+  color: var(--vp-c-blue-4);
+}
+
+/* 🟣 Damage values (近战伤害/气功伤害/反伤) */
+.kn-damage {
+  color: #a855f7;
+  font-weight: 600;
+}
+
+.dark .kn-damage {
+  color: #c084fc;
+}
+
+/* 🟡 Time values (持续/冷却/秒/分钟) */
+.kn-time {
+  color: var(--vp-c-gold-4);
+  font-weight: 600;
+}
+
+.dark .kn-time {
+  color: #facc15;
+}
+
+/* 🔴 Negative / debuff values */
+.kn-neg {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.dark .kn-neg {
+  color: #f87171;
+}
+
+/* 🔷 Range / level / quantity (格/级/×/阶) */
+.kn-range {
+  color: #06b6d4;
+  font-weight: 600;
+}
+
+.dark .kn-range {
+  color: #22d3ee;
+}
+
