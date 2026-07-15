@@ -20,6 +20,7 @@ function colorize(text: string): string {
     .replace(/(\d+)秒/g, '<span class="kn-time">$1秒</span>')
     .replace(/(\d+)s/g, '<span class="kn-time">$1s</span>')
     .replace(/([+＋]?)(\d+(?:\.\d+)?w)/g, '$1<span class="kn-resource">$2</span>')
+    .replace(/(\d+(?:\.\d+)?)倍/g, '<span class="kn-damage">$1倍</span>')
 }
 </script>
 
