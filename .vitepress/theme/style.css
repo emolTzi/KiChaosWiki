@@ -847,12 +847,12 @@ tbody tr:hover td {
 ._Wiki_KiWeapons_气武器 td:nth-child(5),
 ._Wiki_KiWeapons_气武器 th:nth-child(6),
 ._Wiki_KiWeapons_气武器 td:nth-child(6) {
-  width: 12%;
+  width: 8%;
 }
 
 ._Wiki_KiWeapons_气武器 th:nth-child(7),
 ._Wiki_KiWeapons_气武器 td:nth-child(7) {
-  width: 32%;
+  width: 45%;
 }
 
 ._Wiki_KiWeapons_气武器 th:nth-child(8),
@@ -861,11 +861,21 @@ tbody tr:hover td {
 }
 
 ._Wiki_KiWeapons_气武器 td:nth-child(7) {
-  font-size: 0.87em;
+  font-size: 0.85em;
   line-height: 1.65;
   text-align: left;
   white-space: normal;
   word-break: break-word;
+}
+
+/* Allow header wrapping for 强化属性 columns */
+._Wiki_KiWeapons_气武器 th:nth-child(4),
+._Wiki_KiWeapons_气武器 th:nth-child(5),
+._Wiki_KiWeapons_气武器 th:nth-child(6) {
+  font-size: 0.78em;
+  line-height: 1.4;
+  white-space: normal;
+  vertical-align: middle;
 }
 
 /* Ensure the text in "技能" cells wraps properly */
