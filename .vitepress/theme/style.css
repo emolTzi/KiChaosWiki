@@ -813,3 +813,69 @@ tbody tr:hover td {
     padding: 8px 10px;
   }
 }
+
+/* --------------------------------------------------------------------------
+   23. Table Column Width — KiWeapons (气武器) Page
+   The "技能" column contains long skill descriptions (~200 chars),
+   while other columns are compact. Give proportional widths.
+   -------------------------------------------------------------------------- */
+
+._Wiki_KiWeapons_气武器 table {
+  table-layout: fixed;
+  min-width: 1000px;
+}
+
+/* Column index: 0-气武器 1-品质 2-基础属性 3-强化一级 4-强化二级 5-强化三级 6-技能 7-获得方式 */
+._Wiki_KiWeapons_气武器 th:nth-child(1),
+._Wiki_KiWeapons_气武器 td:nth-child(1) {
+  width: 11%;
+}
+
+._Wiki_KiWeapons_气武器 th:nth-child(2),
+._Wiki_KiWeapons_气武器 td:nth-child(2) {
+  width: 7%;
+}
+
+._Wiki_KiWeapons_气武器 th:nth-child(3),
+._Wiki_KiWeapons_气武器 td:nth-child(3) {
+  width: 16%;
+}
+
+._Wiki_KiWeapons_气武器 th:nth-child(4),
+._Wiki_KiWeapons_气武器 td:nth-child(4),
+._Wiki_KiWeapons_气武器 th:nth-child(5),
+._Wiki_KiWeapons_气武器 td:nth-child(5),
+._Wiki_KiWeapons_气武器 th:nth-child(6),
+._Wiki_KiWeapons_气武器 td:nth-child(6) {
+  width: 12%;
+}
+
+._Wiki_KiWeapons_气武器 th:nth-child(7),
+._Wiki_KiWeapons_气武器 td:nth-child(7) {
+  width: 25%;
+}
+
+._Wiki_KiWeapons_气武器 th:nth-child(8),
+._Wiki_KiWeapons_气武器 td:nth-child(8) {
+  width: 5%;
+}
+
+._Wiki_KiWeapons_气武器 td:nth-child(7) {
+  font-size: 0.88em;
+  line-height: 1.6;
+  text-align: left;
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* Ensure the text in "技能" cells wraps properly */
+._Wiki_KiWeapons_气武器 th:nth-child(7) {
+  white-space: normal;
+}
+
+/* Responsive: on narrow screens, allow horizontal scroll */
+@media (max-width: 960px) {
+  ._Wiki_KiWeapons_气武器 table {
+    min-width: 800px;
+  }
+}
