@@ -1,7 +1,6 @@
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
 
-// Custom components
 import KiBadge from './components/KiBadge.vue'
 import KiRaceCard from './components/KiRaceCard.vue'
 import KiSetEffect from './components/KiSetEffect.vue'
@@ -9,75 +8,91 @@ import KiSetEffect from './components/KiSetEffect.vue'
 import type { EnhanceAppContext } from 'vitepress'
 
 function initTableHighlight() {
-  const highlight = () => {
-    requestAnimationFrame(() => {
-      document.querySelectorAll<HTMLTableElement>('.vp-doc table').forEach((table) => {
-        const rows = table.querySelectorAll('tbody tr')
-        if (!rows.length) return
+  requestAnimationFrame(() => {
+    document.querySelectorAll<HTMLTableElement>('.vp-doc table').forEach((table) => {
+      const headers = table.querySelectorAll('thead th')
+      if (!headers.length) return
 
-        // 1. Highlight stat columns by header text
-        const headers = table.querySelectorAll('thead th')
-        headers.forEach((th, colIdx) => {
-          const text = th.textContent!.trim()
-          let hl: string | null = null
+      const rows = table.querySelectorAll('tbody tr')
+      if (!rows.length) return
 
-          if (/^力量/.test(text)) hl = 'str'
-          else if (/^灵巧/.test(text)) hl = 'dex'
-          else if (/^意志/.test(text)) hl = 'wil'
-          else if (/血量(?!回复|上限)/.test(text)) hl = 'hp'
-          else if (/耐力(?!回复|上限)/.test(text)) hl = 'end'
-          else if (/气(?!回复|上限|功)/.test(text) || text === '气') hl = 'ki'
+      // 1. Highlight stat / attribute columns by reading header text
+      headers.forEach((th, colIdx) => {
+        const text = th.textContent!.trim()
+        let hl: string | null = null
 
-          if (!hl) return
+        if (/^力量/.test(text)) hl = 'str'
+        else if (/^灵巧/.test(text)) hl = 'dex'
+        else if (/^意志/.test(text)) hl = 'wil'
+        else if (/^血量(?!回复|上限)/.test(text)) hl = 'hp'
+        else if (/^耐力(?!回复|上限)/.test(text)) hl = 'end'
+        else if (/^气(?!回复|上限|功伤害)/.test(text) || text === '气') hl = 'ki'
 
-          rows.forEach((row) => {
-            const cell = row.children[colIdx] as HTMLElement | undefined
-            if (cell) cell.dataset.hl = hl
-          })
-        })
+        if (!hl) return
 
-        // 2. Grade letters (S/A/B/C) in any cell
         rows.forEach((row) => {
-          row.querySelectorAll('td').forEach((td) => {
-            const text = td.textContent!.trim()
-            if (/^[SABCD]$/.test(text)) {
-              td.dataset.grade = text.toLowerCase()
-            }
-          })
+          const cell = row.children[colIdx] as HTMLElement | undefined
+          if (cell) cell.dataset.hl = hl
         })
+      })
 
-        // 3. Pure numbers in uncolored cells (enhancement levels, material counts, etc.)
+      // 2. Quality column detection (史诗/传说/神话)
+      const qualityHeaderIdx = Array.from(headers).findIndex(
+        (th) => th.textContent!.trim() === '品质'
+      )
+      if (qualityHeaderIdx !== -1) {
         rows.forEach((row) => {
-          row.querySelectorAll('td').forEach((td) => {
-            if (td.dataset.hl || td.dataset.grade) return
-            const t = td.textContent!.trim()
-            if (/^\d+$/.test(t)) {
-              td.dataset.hl = 'num'
-            }
-          })
+          const cell = row.children[qualityHeaderIdx] as HTMLElement | undefined
+          if (!cell) return
+          const text = cell.textContent!.trim()
+          if (text === '史诗') cell.dataset.hl = 'epic'
+          else if (text === '传说') cell.dataset.hl = 'legendary'
+          else if (text === '神话') cell.dataset.hl = 'mythic'
+        })
+      }
+
+      // 3. Grade letters (S/A/B/C/D) in any cell
+      rows.forEach((row) => {
+        row.querySelectorAll('td').forEach((td) => {
+          if (td.dataset.hl) return
+          const text = td.textContent!.trim()
+          if (/^[SABCD]$/.test(text)) {
+            td.dataset.grade = text.toLowerCase()
+          }
+        })
+      })
+
+      // 4. Pure numbers and percentages in uncolored cells
+      rows.forEach((row) => {
+        row.querySelectorAll('td').forEach((td) => {
+          if (td.dataset.hl || td.dataset.grade) return
+          const t = td.textContent!.trim()
+          if (/^\d+$/.test(t)) {
+            td.dataset.hl = 'num'
+          } else if (/^\d+[%％]$/.test(t)) {
+            td.dataset.hl = 'pct'
+          }
         })
       })
     })
-  }
-
-  if (typeof window !== 'undefined') {
-    highlight()
-    // Re-run when route changes (SPA navigation)
-    const observer = new MutationObserver(() => highlight())
-    observer.observe(document.body, { childList: true, subtree: true })
-    setTimeout(() => observer.disconnect(), 5000)
-  }
+  })
 }
 
 export default {
   extends: DefaultTheme,
-  enhanceApp({ app }: EnhanceAppContext) {
+  enhanceApp({ app, router }: EnhanceAppContext) {
     app.component('KiBadge', KiBadge)
     app.component('KiRaceCard', KiRaceCard)
     app.component('KiSetEffect', KiSetEffect)
 
     if (typeof window !== 'undefined') {
-      setTimeout(initTableHighlight, 100)
+      // Run once on first paint
+      initTableHighlight()
+
+      // Re-run on every SPA navigation
+      router.onAfterRouteChanged = () => {
+        initTableHighlight()
+      }
     }
   },
 }

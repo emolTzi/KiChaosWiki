@@ -449,6 +449,39 @@ tbody tr:hover td {
   text-shadow: 0 0 8px rgba(234, 179, 8, 0.3);
 }
 
+/* Quality badges via data-hl (from JS table highlighter) */
+td[data-hl="epic"] {
+  color: #a855f7;
+  font-weight: 700;
+}
+td[data-hl="legendary"] {
+  color: #f97316;
+  font-weight: 700;
+}
+td[data-hl="mythic"] {
+  color: #eab308;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(234, 179, 8, 0.25);
+}
+.dark td[data-hl="epic"] {
+  color: #c084fc;
+}
+.dark td[data-hl="legendary"] {
+  color: #fb923c;
+}
+.dark td[data-hl="mythic"] {
+  color: #facc15;
+}
+
+/* Percentage values */
+td[data-hl="pct"] {
+  color: var(--vp-c-gold-3);
+  font-weight: 650;
+}
+.dark td[data-hl="pct"] {
+  color: var(--vp-c-gold-4);
+}
+
 /* --------------------------------------------------------------------------
    9. Custom Blocks — Info, Tip, Warning, Danger
    -------------------------------------------------------------------------- */
