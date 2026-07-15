@@ -1,5 +1,58 @@
 import { defineConfig } from 'vitepress'
 
+const raceSidebar = [
+  { text: '基础评级', link: '/Wiki/overview' },
+  {
+    text: '赛亚人',
+    collapsed: false,
+    items: [
+      { text: '赛亚人血脉', link: '/Wiki/race/saiyan/赛亚人血脉' },
+      { text: '超级赛亚人', link: '/Wiki/race/saiyan/超级赛亚人' },
+      { text: '原始赛亚人', link: '/Wiki/race/saiyan/原始赛亚人' },
+      { text: '赛亚人之神', link: '/Wiki/race/saiyan/赛亚人之神' },
+      { text: '神之赛亚人', link: '/Wiki/race/saiyan/神之赛亚人' },
+    ],
+  },
+  {
+    text: '人类',
+    collapsed: false,
+    items: [
+      { text: '人类路线', link: '/Wiki/race/human/人类路线' },
+      { text: '人造人路线', link: '/Wiki/race/human/人造人路线' },
+    ],
+  },
+  {
+    text: '弗利萨',
+    collapsed: false,
+    items: [
+      { text: '白金', link: '/Wiki/race/arcosian/白金' },
+      { text: '黑金', link: '/Wiki/race/arcosian/黑金' },
+    ],
+  },
+  {
+    text: '魔人',
+    collapsed: false,
+    items: [
+      { text: '恶魔', link: '/Wiki/race/majin/恶魔' },
+    ],
+  },
+  {
+    text: '那美克',
+    collapsed: false,
+    items: [
+      { text: '神龙', link: '/Wiki/race/namek/神龙' },
+      { text: '孽龙', link: '/Wiki/race/namek/孽龙' },
+    ],
+  },
+]
+
+const equipSidebar = [
+  { text: '套装效果', link: '/Wiki/装备/套装效果' },
+  { text: '装备强化', link: '/Wiki/装备/装备强化' },
+  { text: '称号分类', link: '/Wiki/装备/称号分类' },
+  { text: 'VIP礼包', link: '/Wiki/装备/VIP礼包' },
+]
+
 export default defineConfig({
   lang: 'zh-CN',
   title: '奇沌龙珠 Wiki',
@@ -33,75 +86,11 @@ export default defineConfig({
     ],
 
     sidebar: {
-      '/Wiki/race/': [
-        {
-          text: '基础评级',
-          link: '/Wiki/overview',
-        },
-        {
-          text: '赛亚人',
-          collapsed: false,
-          items: [
-            { text: '赛亚人血脉', link: '/Wiki/race/saiyan/赛亚人血脉' },
-            { text: '超级赛亚人', link: '/Wiki/race/saiyan/超级赛亚人' },
-            { text: '原始赛亚人', link: '/Wiki/race/saiyan/原始赛亚人' },
-            { text: '赛亚人之神', link: '/Wiki/race/saiyan/赛亚人之神' },
-            { text: '神之赛亚人', link: '/Wiki/race/saiyan/神之赛亚人' },
-          ],
-        },
-        {
-          text: '人类',
-          collapsed: false,
-          items: [
-            { text: '人类路线', link: '/Wiki/race/human/人类路线' },
-            { text: '人造人路线', link: '/Wiki/race/human/人造人路线' },
-          ],
-        },
-        {
-          text: '弗利萨',
-          collapsed: false,
-          items: [
-            { text: '白金', link: '/Wiki/race/arcosian/白金' },
-            { text: '黑金', link: '/Wiki/race/arcosian/黑金' },
-          ],
-        },
-        {
-          text: '魔人',
-          collapsed: false,
-          items: [
-            { text: '恶魔', link: '/Wiki/race/majin/恶魔' },
-          ],
-        },
-        {
-          text: '那美克',
-          collapsed: false,
-          items: [
-            { text: '神龙', link: '/Wiki/race/namek/神龙' },
-            { text: '孽龙', link: '/Wiki/race/namek/孽龙' },
-          ],
-        },
-      ],
-      '/Wiki/装备/': [
-        { text: '套装效果', link: '/Wiki/装备/套装效果' },
-        { text: '装备强化', link: '/Wiki/装备/装备强化' },
-        { text: '称号分类', link: '/Wiki/装备/称号分类' },
-        { text: 'VIP礼包', link: '/Wiki/装备/VIP礼包' },
-      ],
+      '/Wiki/overview': raceSidebar,
+      '/Wiki/race/': raceSidebar,
+      '/Wiki/装备/': equipSidebar,
       '/Wiki/KiWeapons/': [
         { text: '气武器表', link: '/Wiki/KiWeapons/气武器' },
-      ],
-      '/Wiki/': [
-        {
-          text: '快速导航',
-          items: [
-            { text: '种族天赋概览', link: '/Wiki/overview' },
-            { text: '气武器表', link: '/Wiki/KiWeapons/气武器' },
-            { text: '套装效果', link: '/Wiki/装备/套装效果' },
-            { text: '装备强化', link: '/Wiki/装备/装备强化' },
-            { text: '称号分类', link: '/Wiki/装备/称号分类' },
-            { text: 'VIP礼包', link: '/Wiki/装备/VIP礼包' },
-          ],
-        },
       ],
     },
 
