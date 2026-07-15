@@ -35,6 +35,10 @@ export default defineConfig({
     sidebar: {
       '/Wiki/race/': [
         {
+          text: '基础评级',
+          link: '/Wiki/overview',
+        },
+        {
           text: '赛亚人',
           collapsed: false,
           items: [
@@ -78,23 +82,24 @@ export default defineConfig({
         },
       ],
       '/Wiki/装备/': [
+        { text: '套装效果', link: '/Wiki/装备/套装效果' },
+        { text: '装备强化', link: '/Wiki/装备/装备强化' },
+        { text: '称号分类', link: '/Wiki/装备/称号分类' },
+        { text: 'VIP礼包', link: '/Wiki/装备/VIP礼包' },
+      ],
+      '/Wiki/KiWeapons/': [
+        { text: '气武器表', link: '/Wiki/KiWeapons/气武器' },
+      ],
+      '/Wiki/': [
         {
-          text: '装备系统',
-          collapsed: false,
+          text: '快速导航',
           items: [
+            { text: '种族天赋概览', link: '/Wiki/overview' },
+            { text: '气武器表', link: '/Wiki/KiWeapons/气武器' },
             { text: '套装效果', link: '/Wiki/装备/套装效果' },
             { text: '装备强化', link: '/Wiki/装备/装备强化' },
             { text: '称号分类', link: '/Wiki/装备/称号分类' },
             { text: 'VIP礼包', link: '/Wiki/装备/VIP礼包' },
-          ],
-        },
-      ],
-      '/Wiki/KiWeapons/': [
-        {
-          text: '气武器',
-          collapsed: false,
-          items: [
-            { text: '气武器表', link: '/Wiki/KiWeapons/气武器' },
           ],
         },
       ],

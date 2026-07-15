@@ -151,27 +151,39 @@ tbody tr:hover {
 
 @media (min-width: 960px) {
   .VPSidebar {
-    padding-top: 8px !important;
+    padding-top: 0 !important;
   }
+}
+
+.VPSidebar nav {
+  padding-top: 12px;
+}
+
+.VPSidebarItem.level-0 {
+  padding-bottom: 4px;
 }
 
 .VPSidebarItem.level-0 > .item > .text {
   font-weight: 700;
-  font-size: 0.9em;
-  letter-spacing: 0.02em;
+  font-size: 0.88em;
+  letter-spacing: 0.03em;
 }
 
 .VPSidebarItem.level-1 > .item > .text {
-  font-size: 0.85em;
+  font-size: 0.84em;
 }
 
 .group + .group {
   border-top: 1px solid var(--vp-c-divider);
-  padding-top: 16px;
-  margin-top: 16px;
+  padding-top: 10px;
+  margin-top: 10px;
 }
 
 .VPNavBar .title {
   font-weight: 700;
-  font-size: 1.1em;
+  font-size: 1.05em;
+}
+
+.VPNavBarTitle {
+  border-bottom: 1px solid var(--vp-c-divider);
 }
