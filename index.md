@@ -7,13 +7,13 @@ hero:
   tagline: 奇沌龙珠 Minecraft 服务器百科全书 — 查询血脉分支、形态数据与装备强化资讯
   actions:
     - theme: brand
-      text: 种族天赋
+      text: 🧬 种族天赋
       link: /Wiki/overview
     - theme: alt
-      text: 气武器
+      text: ⚔️ 气武器
       link: /Wiki/KiWeapons/气武器
     - theme: alt
-      text: 装备系统
+      text: 🛡️ 装备系统
       link: /Wiki/装备/套装效果
 
 features:

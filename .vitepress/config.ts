@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitepress'
+﻿import { defineConfig } from 'vitepress'
 
 const raceSidebar = [
   { text: '基础评级', link: '/Wiki/overview' },
@@ -56,14 +56,20 @@ const equipSidebar = [
 export default defineConfig({
   lang: 'zh-CN',
   title: '奇沌龙珠 Wiki',
-  description: '奇沌龙珠 Minecraft 服务器百科全书 - 种族天赋、气武器、装备系统',
+  description: '奇沌龙珠 Minecraft 服务器百科全书 — 种族天赋、气武器、装备系统全攻略',
 
   lastUpdated: true,
   cleanUrls: true,
+  metaChunk: true,
 
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     ['meta', { name: 'theme-color', content: '#e85500' }],
+    ['meta', { name: 'application-name', content: '奇沌龙珠 Wiki' }],
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:title', content: '奇沌龙珠 Wiki' }],
+    ['meta', { property: 'og:description', content: '奇沌龙珠 Minecraft 服务器百科全书 — 种族天赋、气武器、装备系统全攻略' }],
+    ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
   ],
 
   themeConfig: {
@@ -71,11 +77,11 @@ export default defineConfig({
     siteTitle: '奇沌龙珠 Wiki',
 
     nav: [
-      { text: '首页', link: '/' },
-      { text: '种族天赋', link: '/Wiki/overview' },
-      { text: '气武器', link: '/Wiki/KiWeapons/气武器' },
+      { text: '🏠 首页', link: '/' },
+      { text: '🧬 种族天赋', link: '/Wiki/overview' },
+      { text: '⚔️ 气武器', link: '/Wiki/KiWeapons/气武器' },
       {
-        text: '装备',
+        text: '🛡️ 装备',
         items: [
           { text: '套装效果', link: '/Wiki/装备/套装效果' },
           { text: '装备强化', link: '/Wiki/装备/装备强化' },
@@ -106,6 +112,10 @@ export default defineConfig({
 
     lastUpdated: {
       text: '最后更新',
+      formatOptions: {
+        dateStyle: 'full',
+        timeStyle: 'short',
+      },
     },
 
     search: {
@@ -131,7 +141,7 @@ export default defineConfig({
 
     footer: {
       message: '奇沌龙珠 Minecraft 服务器 Wiki',
-      copyright: 'Built with VitePress',
+      copyright: 'Built with \u2764\uFE0F and VitePress',
     },
   },
 })

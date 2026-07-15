@@ -1,4 +1,4 @@
-# 🐉 奇沌龙珠 Wiki
+# 🧬 奇沌龙珠 Wiki
 
 欢迎来到奇沌龙珠的百科全书！点击下方入口快速跳转至对应板块。
 
@@ -11,3 +11,20 @@
 | 🧬 **[种族天赋](/Wiki/overview)** | 各血脉分支与形态加成数据 |
 | ⚔️ **[气武器](/Wiki/KiWeapons/气武器)** | 气武器详细属性列表 |
 | 🛡️ **[装备系统](/Wiki/装备/套装效果)** | 套装效果、强化、称号及VIP礼包 |
+
+## 🚀 本地开发
+
+```bash
+# 安装依赖
+npm install
+# 启动开发服务器
+npm run dev
+# 构建静态页面
+npm run build
+# 预览构建结果
+npm run preview
+```
+
+---
+
+Built with [VitePress](https://vitepress.dev)
