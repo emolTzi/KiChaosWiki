@@ -40,9 +40,9 @@ function highlightNumbers(text: string): string {
     '<span class="kn-time">$1s</span>',
   )
 
-  // ── 🟣 Purple: multiplier (倍) — supports decimals like 1.5倍 ──
+  // ── 🟣 Purple: multiplier (倍) ──
   r = r.replace(
-    /(\d+(?:\.\d+)?)倍/g,
+    /(\d+)倍/g,
     '<span class="kn-damage">$1倍</span>',
   )
 
