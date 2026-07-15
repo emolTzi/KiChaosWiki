@@ -868,6 +868,104 @@ tbody tr:hover td {
   word-break: break-word;
 }
 
+/* --------------------------------------------------------------------------
+   24. Table Data Highlighting — Color-coded Attributes
+   Columns are colored based on their header text (力量=red, 灵巧=green, etc.)
+   -------------------------------------------------------------------------- */
+
+td[data-hl] {
+  font-weight: 650;
+}
+
+/* Pure number cells in non-stat tables (e.g. enhancement levels, material counts) */
+td[data-hl="num"] {
+  color: var(--vp-c-brand-3);
+  font-weight: 700;
+}
+
+/* 力量 (Strength) — Orange-Red */
+td[data-hl="str"] {
+  color: #dc2626;
+}
+
+.dark td[data-hl="str"] {
+  color: #f87171;
+}
+
+/* 灵巧 (Dexterity) — Green */
+td[data-hl="dex"] {
+  color: #16a34a;
+}
+
+.dark td[data-hl="dex"] {
+  color: #4ade80;
+}
+
+/* 意志 (Willpower) — Blue */
+td[data-hl="wil"] {
+  color: #2563eb;
+}
+
+.dark td[data-hl="wil"] {
+  color: #60a5fa;
+}
+
+/* 血量 (HP) — Deep Red */
+td[data-hl="hp"] {
+  color: #dc2626;
+}
+
+.dark td[data-hl="hp"] {
+  color: #f87171;
+}
+
+/* 耐力 (Stamina) — Gold */
+td[data-hl="end"] {
+  color: #ca8a04;
+}
+
+.dark td[data-hl="end"] {
+  color: #fbbf24;
+}
+
+/* 气 (Ki) — Cyan */
+td[data-hl="ki"] {
+  color: #0891b2;
+}
+
+.dark td[data-hl="ki"] {
+  color: #22d3ee;
+}
+
+/* Grade letters (S/A/B/C) — overview table */
+td[data-grade] {
+  font-weight: 700;
+}
+
+td[data-grade="s"] {
+  color: #eab308;
+}
+
+td[data-grade="a"] {
+  color: #22c55e;
+}
+
+td[data-grade="b"] {
+  color: #3b82f6;
+}
+
+td[data-grade="c"] {
+  color: #6b7280;
+}
+
+td[data-grade="d"] {
+  color: #ef4444;
+}
+
+.dark td[data-grade="c"] {
+  color: #9ca3af;
+}
+
 /* Allow header wrapping for 强化属性 columns */
 ._Wiki_KiWeapons_气武器 th:nth-child(4),
 ._Wiki_KiWeapons_气武器 th:nth-child(5),
