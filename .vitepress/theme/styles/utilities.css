@@ -1,0 +1,384 @@
+/* --------------------------------------------------------------------------
+   12. Horizontal Rule
+   -------------------------------------------------------------------------- */
+
+.vp-doc hr {
+  margin: 40px 0;
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--vp-c-divider),
+    var(--vp-c-brand-soft),
+    var(--vp-c-divider),
+    transparent
+  );
+}
+
+/* --------------------------------------------------------------------------
+   17. Scrollbar — Brand themed
+   -------------------------------------------------------------------------- */
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--vp-c-gutter);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--vp-c-brand-soft);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--vp-c-brand-soft);
+}
+
+/* --------------------------------------------------------------------------
+   18. Selection
+   -------------------------------------------------------------------------- */
+
+::selection {
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+}
+
+.dark ::selection {
+  background: rgba(249, 115, 22, 0.3);
+  color: var(--vp-c-orange-4);
+}
+
+/* --------------------------------------------------------------------------
+   20. Animations & Transitions
+   -------------------------------------------------------------------------- */
+
+/* Fade in on page load */
+.vp-doc {
+  animation: contentFadeIn 0.3s ease;
+}
+
+@keyframes contentFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Homepage feature stagger animation */
+.VPFeature {
+  animation: featureFadeIn 0.5s ease backwards;
+}
+
+.VPFeature:nth-child(1) { animation-delay: 0.05s; }
+.VPFeature:nth-child(2) { animation-delay: 0.12s; }
+.VPFeature:nth-child(3) { animation-delay: 0.19s; }
+.VPFeature:nth-child(4) { animation-delay: 0.26s; }
+.VPFeature:nth-child(5) { animation-delay: 0.33s; }
+.VPFeature:nth-child(6) { animation-delay: 0.40s; }
+
+@keyframes featureFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   22. Responsive Adjustments
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 640px) {
+  .vp-doc {
+    font-size: 15px;
+  }
+
+  .vp-doc h1 {
+    font-size: 1.6rem;
+  }
+
+  .vp-doc h2 {
+    font-size: 1.25rem;
+  }
+
+  table {
+    font-size: 0.85em;
+  }
+
+  th, td {
+    padding: 8px 10px;
+  }
+}
+
+/* ==========================================================================
+   Phase 2 (2.6) — Page Transitions, Back-to-Top, Mode Transition
+   页面切换淡入 + 回到顶部按钮（纯 CSS，VitePress 内置）+ 暗色/亮色模式过渡
+   ========================================================================== */
+
+/* 页面切换淡入动画 — 在路由切换时再次播放，结合 key 变化触发重渲染 */
+.vp-doc {
+  animation: contentFadeIn 0.35s ease;
+}
+
+.vp-doc h1 {
+  animation: headingFadeIn 0.5s ease 0.05s backwards;
+}
+
+@keyframes headingFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 回到顶部按钮 — 纯 CSS 美化 VitePress 内置 .VPBackToTop */
+.VPBackToTop {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  border: 1px solid var(--vp-c-brand-soft) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.85),
+    var(--vp-c-brand-soft)
+  ) !important;
+  backdrop-filter: blur(8px) saturate(1.4);
+  -webkit-backdrop-filter: blur(8px) saturate(1.4);
+  box-shadow:
+    0 4px 14px -4px rgba(0, 0, 0, 0.2),
+    0 0 16px rgba(249, 115, 22, 0.2);
+  color: var(--vp-c-brand-1) !important;
+  transition:
+    transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.25s ease,
+    opacity 0.25s ease !important;
+}
+
+.dark .VPBackToTop {
+  background: linear-gradient(
+    135deg,
+    rgba(30, 30, 34, 0.85),
+    rgba(249, 115, 22, 0.2)
+  ) !important;
+  border-color: rgba(249, 115, 22, 0.25) !important;
+  box-shadow:
+    0 4px 14px -4px rgba(0, 0, 0, 0.5),
+    0 0 18px rgba(249, 115, 22, 0.28);
+}
+
+.VPBackToTop:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow:
+    0 8px 22px -6px rgba(0, 0, 0, 0.28),
+    0 0 24px rgba(249, 115, 22, 0.4);
+}
+
+.dark .VPBackToTop:hover {
+  box-shadow:
+    0 8px 22px -6px rgba(0, 0, 0, 0.6),
+    0 0 26px rgba(249, 115, 22, 0.5);
+}
+
+.VPBackToTop:active {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.VPBackToTop svg {
+  color: var(--vp-c-brand-1) !important;
+}
+
+/* 暗色 / 亮色模式过渡动画 — 切换主题时颜色平滑过渡 */
+html {
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
+}
+
+body,
+.VPApp,
+.VPNavBar,
+.VPSidebar,
+.VPLocalNav,
+.VPContent,
+.VPFooter,
+.vp-doc,
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc a,
+.vp-doc blockquote,
+table,
+th,
+td,
+.custom-block,
+.VPFeature,
+.VPButton {
+  transition:
+    background-color 0.4s ease,
+    border-color 0.4s ease,
+    color 0.4s ease;
+}
+
+/* 首次加载时不播放主题过渡，避免闪烁 */
+html:not(.dark):not(.ready) body,
+html.dark:not(.ready) body {
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vp-doc,
+  .vp-doc h1 {
+    animation: none;
+  }
+  .VPBackToTop,
+  html,
+  body,
+  .VPApp,
+  .VPNavBar,
+  .VPSidebar,
+  .VPContent,
+  .VPFooter {
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   Phase 3 — Enhancement: Page Transition / Mode Switch / Selection
+   页面过渡淡入增强 + 暗色/亮色切换过渡 + 选择高亮增强（仅追加，不改现有内容）
+   ========================================================================== */
+
+/* 1. 页面过渡淡入动画增强 — .vp-doc 更明显的从下往上位移 + 淡入（0.4s cubic-bezier） */
+.vp-doc {
+  animation: contentFadeInEnhanced 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes contentFadeInEnhanced {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 2. 暗色 / 亮色模式切换过渡 — 所有元素背景色与文字颜色 0.3s ease 平滑过渡 */
+*,
+*::before,
+*::after {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* 首次加载不播放主题过渡，避免初始闪烁 */
+html:not(.ready) *,
+html:not(.ready) *::before,
+html:not(.ready) *::after {
+  transition: none;
+}
+
+/* 3. 选择高亮增强 — ::selection 背景色加亮 + 文字光晕，暗色模式适配 */
+::selection {
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+  text-shadow: 0 0 6px var(--vp-c-brand-soft);
+}
+
+.dark ::selection {
+  background: rgba(249, 115, 22, 0.42);
+  color: var(--vp-c-orange-4);
+  text-shadow: 0 0 6px rgba(249, 115, 22, 0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vp-doc {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   追加：增强版入场动画 / 全局主题过渡 / 选区高亮强化
+   ========================================================================== */
+
+/* 1. 增强版 contentFadeIn — 从下往上位移 20px，透明度 0→1，0.4s cubic-bezier(0.2, 0, 0.2, 1) */
+@keyframes contentFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.vp-doc {
+  animation: contentFadeIn 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+/* 2. 暗色 / 亮色模式切换过渡 — 全局元素颜色平滑过渡 0.3s ease */
+*,
+*::before,
+*::after {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* 3. 亮色模式选区高亮强化 — 使用品牌软色，更醒目 */
+::selection {
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+  text-shadow: 0 0 1px rgba(249, 115, 22, 0.35);
+}
+
+/* 4. 暗色模式选区适配 */
+.dark ::selection {
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+  text-shadow: none;
+}
+
+/* 无障碍：减弱动画偏好下禁用新增动画与全局过渡 */
+@media (prefers-reduced-motion: reduce) {
+  .vp-doc {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none;
+  }
+}

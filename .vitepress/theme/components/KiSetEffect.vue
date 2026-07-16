@@ -12,14 +12,16 @@ defineProps<{
   solo?: string
 }>()
 
-/** Colorize numbers in text with the same scheme as the wiki-wide plugin. */
+/**
+ * Colorize numbers in text with the same scheme as the wiki-wide plugin.
+ * Uses CSS classes defined in styles/tables.css for consistent theming.
+ */
 function colorize(text: string): string {
   return text
     .replace(/(\d+(?:\.\d+)?%)/g, '<span class="kn-pct">$1</span>')
-    .replace(/(\d+)分钟/g, '<span class="kn-time">$1分钟</span>')
-    .replace(/(\d+)秒/g, '<span class="kn-time">$1秒</span>')
-    .replace(/(\d+)s/g, '<span class="kn-time">$1s</span>')
+    .replace(/(\d+(?:\.\d+)?)(分钟|秒|s)/g, '<span class="kn-time">$1$2</span>')
     .replace(/([+＋]?)(\d+(?:\.\d+)?w)/g, '$1<span class="kn-resource">$2</span>')
+    .replace(/(\d+(?:\.\d+)?)倍/g, '<span class="kn-damage">$1倍</span>')
 }
 </script>
 
@@ -46,17 +48,41 @@ function colorize(text: string): string {
 
 <style scoped>
 .ki-set-effect {
+  position: relative;
+  overflow: hidden;
   border: 1px solid var(--vp-c-divider);
   border-radius: 12px;
   padding: 20px 24px;
   margin: 20px 0;
   background: var(--vp-c-bg-soft);
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ki-set-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--vp-c-brand-3), var(--vp-c-gold-4), var(--vp-c-blue-3));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
 }
 
 .ki-set-effect:hover {
+  transform: translateY(-2px);
   border-color: var(--vp-c-brand-soft);
-  box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 24px -8px rgba(234, 88, 12, 0.18);
+}
+
+.ki-set-effect:hover::before {
+  transform: scaleX(1);
+}
+
+.dark .ki-set-effect:hover {
+  box-shadow: 0 8px 24px -8px rgba(249, 115, 22, 0.2);
 }
 
 .set-title {
@@ -64,7 +90,8 @@ function colorize(text: string): string {
   font-weight: 700 !important;
   margin: 0 0 16px 0 !important;
   padding-bottom: 10px !important;
-  border-bottom: 2px solid var(--vp-c-brand-soft);
+  border-bottom: 2px solid;
+  border-image: linear-gradient(90deg, var(--vp-c-brand-3), var(--vp-c-gold-4), transparent) 1;
   color: var(--vp-c-brand-1) !important;
   -webkit-text-fill-color: var(--vp-c-brand-1) !important;
   background: none !important;
@@ -87,7 +114,9 @@ function colorize(text: string): string {
   color: var(--vp-c-gold-3);
   white-space: nowrap;
   min-width: 72px;
-  padding-top: 1px;
+  padding: 1px 8px 0;
+  border-radius: 6px;
+  background: var(--vp-c-gold-bg);
 }
 
 .dark .piece-label {
@@ -102,10 +131,11 @@ function colorize(text: string): string {
 
 .set-skill {
   margin-top: 16px;
-  padding: 16px;
+  padding: 16px 16px 16px 20px;
   background: var(--vp-c-brand-bg);
-  border-radius: 10px;
   border: 1px solid var(--vp-c-brand-soft);
+  border-left: 4px solid var(--vp-c-brand-3);
+  border-radius: 0 10px 10px 0;
 }
 
 .skill-header {

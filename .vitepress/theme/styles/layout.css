@@ -1,0 +1,286 @@
+/* --------------------------------------------------------------------------
+   3. Layout & Spacing
+   -------------------------------------------------------------------------- */
+
+:root {
+  --vp-sidebar-width: 280px;
+  --vp-nav-height: 56px;
+}
+
+/* Content max-width slightly wider for table-heavy wiki */
+:root {
+  --vp-layout-max-width: 1440px;
+}
+
+@media (min-width: 960px) {
+  .VPSidebar {
+    padding-top: 0 !important;
+  }
+
+  .VPSidebar nav {
+    padding-top: 12px;
+  }
+
+  .content-container {
+    max-width: 860px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. Navbar 鈥?Gradient with Glass Effect
+   -------------------------------------------------------------------------- */
+
+.VPNavBar {
+  backdrop-filter: blur(12px) saturate(1.4);
+  background: rgba(255, 255, 255, 0.85) !important;
+  border-bottom: 1px solid var(--vp-c-gutter);
+}
+
+.dark .VPNavBar {
+  background: rgba(18, 18, 20, 0.88) !important;
+}
+
+.VPNavBar .title {
+  font-weight: 800;
+  font-size: 1.05em;
+  background: linear-gradient(135deg, var(--vp-c-orange-3), var(--vp-c-gold-4));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.VPNavBarTitle {
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+/* Nav menu items */
+.VPNavBarMenuLink {
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 0 14px !important;
+  transition: all 0.2s ease;
+}
+
+.VPNavBarMenuLink:hover,
+.VPNavBarMenuLink.active {
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1) !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. Sidebar 鈥?Modern Cards
+   -------------------------------------------------------------------------- */
+
+.VPSidebarItem.level-0 {
+  padding-bottom: 6px;
+}
+
+.VPSidebarItem.level-0 > .item > .text {
+  font-weight: 700;
+  font-size: 0.88em;
+  letter-spacing: 0.03em;
+  color: var(--vp-c-brand-1);
+}
+
+.VPSidebarItem.level-1 > .item > .text {
+  font-size: 0.84em;
+}
+
+/* Active link highlight */
+.VPSidebarItem .item .link {
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  padding: 6px 12px !important;
+  margin: 0 8px;
+}
+
+.VPSidebarItem .item .link:hover {
+  background: var(--vp-c-brand-bg);
+}
+
+.VPSidebarItem.is-active > .item .link {
+  background: var(--vp-c-brand-soft);
+  font-weight: 600;
+}
+
+.VPSidebarItem.is-active > .item .link .text {
+  color: var(--vp-c-brand-1);
+}
+
+/* Group separator */
+.group + .group {
+  border-top: 1px solid var(--vp-c-divider);
+  padding-top: 12px;
+  margin-top: 10px;
+}
+
+/* --------------------------------------------------------------------------
+   19. Table of Contents / Outline
+   -------------------------------------------------------------------------- */
+
+.VPDocAsideOutline .outline-link {
+  border-radius: 6px;
+  padding: 3px 10px;
+  transition: all 0.15s ease;
+  font-size: 0.85em;
+}
+
+.VPDocAsideOutline .outline-link:hover {
+  background: var(--vp-c-brand-bg);
+  color: var(--vp-c-brand-1);
+}
+
+.VPDocAsideOutline .outline-link.active {
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   20. Navbar 鈥?Scroll Shadow Gradient (appended enhancement)
+   -------------------------------------------------------------------------- */
+
+:root {
+  --vp-navbar-shadow-start: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --vp-navbar-shadow-end: 0 6px 22px rgba(0, 0, 0, 0.12);
+  --vp-sidebar-accent-from: var(--vp-c-brand-1);
+  --vp-sidebar-accent-to: var(--vp-c-orange-3);
+}
+
+.dark {
+  --vp-navbar-shadow-start: 0 1px 2px rgba(0, 0, 0, 0.40);
+  --vp-navbar-shadow-end: 0 6px 22px rgba(0, 0, 0, 0.60);
+}
+
+/* Scroll-driven shadow: intensifies as the page is scrolled down.
+   Uses the modern CSS scroll-timeline (progressive, @supports-gated). */
+@supports (animation-timeline: scroll()) {
+  @keyframes vp-navbar-scroll-shadow {
+    from {
+      box-shadow: var(--vp-navbar-shadow-start);
+    }
+    to {
+      box-shadow: var(--vp-navbar-shadow-end);
+    }
+  }
+
+  .VPNavBar {
+    animation: vp-navbar-scroll-shadow linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0px 140px;
+  }
+}
+
+/* Fallback: a subtle persistent shadow when scroll-timeline is unsupported. */
+@supports not (animation-timeline: scroll()) {
+  .VPNavBar {
+    box-shadow: var(--vp-navbar-shadow-start);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   21. Navbar Menu 鈥?Center-expanding Underline Animation (appended)
+   -------------------------------------------------------------------------- */
+
+.VPNavBarMenuLink {
+  position: relative;
+}
+
+.VPNavBarMenuLink::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--vp-c-brand-1),
+    var(--vp-c-orange-3)
+  );
+  transform: translateX(-50%);
+  transition: width 0.25s ease;
+  pointer-events: none;
+}
+
+.VPNavBarMenuLink:hover::after,
+.VPNavBarMenuLink.active::after {
+  width: 60%;
+}
+
+/* --------------------------------------------------------------------------
+   22. Sidebar 鈥?Group Decorative Bar (appended)
+   -------------------------------------------------------------------------- */
+
+.VPSidebarItem.level-0 > .item {
+  position: relative;
+}
+
+.VPSidebarItem.level-0 > .item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(
+    180deg,
+    var(--vp-sidebar-accent-from),
+    var(--vp-sidebar-accent-to)
+  );
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.VPSidebarItem.level-0 > .item:hover::before {
+  opacity: 1;
+}
+
+.dark .VPSidebarItem.level-0 > .item::before {
+  opacity: 0.55;
+}
+
+.dark .VPSidebarItem.level-0 > .item:hover::before {
+  opacity: 0.9;
+}
+
+/* --------------------------------------------------------------------------
+   23. Sidebar 鈥?Expand / Collapse Smooth Transition (appended)
+   -------------------------------------------------------------------------- */
+
+.VPSidebarItem .caret,
+.VPSidebarItem .caret-icon {
+  transition: transform 0.25s ease;
+}
+
+.VPSidebarItem .items {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.VPSidebarItem .item {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* --------------------------------------------------------------------------
+   24. Reduced Motion Adaptation (appended)
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .VPNavBarMenuLink::after,
+  .VPSidebarItem .caret,
+  .VPSidebarItem .caret-icon,
+  .VPSidebarItem .items,
+  .VPSidebarItem .item,
+  .VPSidebarItem.level-0 > .item::before {
+    transition: none;
+  }
+
+  @supports (animation-timeline: scroll()) {
+    .VPNavBar {
+      animation: none;
+      box-shadow: var(--vp-navbar-shadow-start);
+    }
+  }
+}

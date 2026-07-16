@@ -1,0 +1,75 @@
+/* --------------------------------------------------------------------------
+   1. Color System 鈥?Dragon Ball Palette
+   -------------------------------------------------------------------------- */
+
+:root {
+  /* 馃煚 Dragon Ball Orange 鈥?brand primary */
+  --vp-c-orange-1: #c2410c;
+  --vp-c-orange-2: #ea580c;
+  --vp-c-orange-3: #f97316;
+  --vp-c-orange-4: #fb923c;
+  --vp-c-orange-soft: rgba(234, 88, 12, 0.12);
+  --vp-c-orange-bg: rgba(234, 88, 12, 0.06);
+
+  /* 馃數 Ki Blue 鈥?accent */
+  --vp-c-blue-1: #1d4ed8;
+  --vp-c-blue-2: #2563eb;
+  --vp-c-blue-3: #3b82f6;
+  --vp-c-blue-4: #60a5fa;
+  --vp-c-blue-soft: rgba(37, 99, 235, 0.12);
+  --vp-c-blue-bg: rgba(37, 99, 235, 0.06);
+
+  /* 馃煛 Super Saiyan Gold 鈥?tip/warning */
+  --vp-c-gold-1: #92400e;
+  --vp-c-gold-2: #a16207;
+  --vp-c-gold-3: #ca8a04;
+  --vp-c-gold-4: #eab308;
+  --vp-c-gold-soft: rgba(202, 138, 4, 0.14);
+  --vp-c-gold-bg: rgba(202, 138, 4, 0.07);
+
+  /* 馃煝 Namekian Green 鈥?success */
+  --vp-c-green-1: #166534;
+  --vp-c-green-2: #16a34a;
+  --vp-c-green-3: #22c55e;
+  --vp-c-green-soft: rgba(22, 163, 74, 0.12);
+
+  /* 馃煟 Majin Purple 鈥?danger/warning */
+  --vp-c-purple-1: #7e22ce;
+  --vp-c-purple-2: #a855f7;
+  --vp-c-purple-3: #c084fc;
+  --vp-c-purple-soft: rgba(168, 85, 247, 0.12);
+
+  /* Brand mapping */
+  --vp-c-brand-1: var(--vp-c-orange-1);
+  --vp-c-brand-2: var(--vp-c-orange-2);
+  --vp-c-brand-3: var(--vp-c-orange-3);
+  --vp-c-brand-soft: var(--vp-c-orange-soft);
+
+  /* Dark mode override handled below */
+}
+
+.dark {
+  --vp-c-brand-1: var(--vp-c-orange-3);
+  --vp-c-brand-2: var(--vp-c-orange-2);
+  --vp-c-brand-3: var(--vp-c-orange-1);
+  --vp-c-brand-soft: rgba(249, 115, 22, 0.16);
+}
+
+/* --------------------------------------------------------------------------
+   21. Dark Mode Enhancements
+   -------------------------------------------------------------------------- */
+
+.dark {
+  --vp-c-bg: #0e0e10;
+  --vp-c-bg-soft: #151517;
+  --vp-c-bg-mute: #1c1c1f;
+  --vp-c-divider: #2a2a2e;
+}
+
+.dark .VPHero .VPImage {
+  filter: drop-shadow(0 4px 12px rgba(249, 115, 22, 0.2));
+}
+
+.dark .vp-doc img {
+  filter: brightness(0.9);
+}

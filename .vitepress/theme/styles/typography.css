@@ -1,0 +1,95 @@
+/* --------------------------------------------------------------------------
+   2. Typography
+   -------------------------------------------------------------------------- */
+
+:root {
+  --vp-font-family-base:
+    'Inter', 'Inter4CJK', -apple-system, BlinkMacSystemFont,
+    'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', '寰蒋闆呴粦', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --vp-font-family-mono:
+    ui-monospace, 'JetBrains Mono', 'Menlo', 'Monaco', 'Consolas',
+    'Liberation Mono', 'Courier New', monospace;
+}
+
+/* Improve CJK readability */
+.vp-doc {
+  font-size: 15.5px;
+}
+
+.vp-doc p {
+  line-height: 1.85;
+  margin: 12px 0;
+}
+
+.vp-doc h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--vp-c-orange-3), var(--vp-c-gold-4));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+}
+
+.vp-doc h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 48px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--vp-c-brand-soft);
+  letter-spacing: -0.01em;
+}
+
+.vp-doc h2:first-child {
+  margin-top: 0;
+}
+
+.vp-doc h3 {
+  font-size: 1.15rem;
+  font-weight: 650;
+  margin-top: 32px;
+  color: var(--vp-c-brand-2);
+}
+
+.vp-doc h4 {
+  font-size: 1.02rem;
+  font-weight: 600;
+  margin-top: 24px;
+}
+
+/* --------------------------------------------------------------------------
+   10. Blockquotes 鈥?Themed
+   -------------------------------------------------------------------------- */
+
+.vp-doc blockquote {
+  border-left: 4px solid;
+  border-image: linear-gradient(180deg, var(--vp-c-brand-3), var(--vp-c-gold-4)) 1;
+  background: var(--vp-c-brand-bg);
+  border-radius: 0 10px 10px 0;
+  padding: 12px 20px;
+  margin: 16px 0;
+}
+
+.vp-doc blockquote p {
+  margin: 0;
+  font-size: 0.95em;
+}
+
+/* --------------------------------------------------------------------------
+   11. Links
+   -------------------------------------------------------------------------- */
+
+.vp-doc a {
+  font-weight: 500;
+  transition: all 0.2s ease;
+  color: var(--vp-c-brand-1);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.vp-doc a:hover {
+  color: var(--vp-c-brand-3);
+  border-bottom-color: var(--vp-c-brand-soft);
+}

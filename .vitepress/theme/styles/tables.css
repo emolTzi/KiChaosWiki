@@ -1,0 +1,600 @@
+/* --------------------------------------------------------------------------
+   8. Tables — Wiki Game Stats Style
+   -------------------------------------------------------------------------- */
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  margin: 20px 0;
+}
+
+/* Sticky header */
+thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+th {
+  background: linear-gradient(135deg, var(--vp-c-brand-2), var(--vp-c-brand-3));
+  color: #ffffff;
+  font-weight: 600;
+  padding: 12px 14px;
+  font-size: 0.82em;
+  letter-spacing: 0.04em;
+  text-align: center;
+  white-space: nowrap;
+}
+
+th:first-child {
+  border-top-left-radius: 10px;
+}
+
+th:last-child {
+  border-top-right-radius: 10px;
+}
+
+.dark th {
+  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-2));
+}
+
+td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--vp-c-divider);
+  text-align: center;
+  font-size: 0.93em;
+  transition: background 0.15s ease;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* Zebra striping */
+tbody tr:nth-child(even) td {
+  background: var(--vp-c-bg-soft);
+}
+
+.dark tbody tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+tbody tr:hover td {
+  background: var(--vp-c-brand-soft) !important;
+}
+
+/* Table wrapper for overflow */
+.vp-doc .table-wrap {
+  border-radius: 10px;
+  overflow-x: auto;
+}
+
+.vp-doc .table-wrap table {
+  min-width: 600px;
+}
+
+/* Quality badges in tables */
+.quality-epic {
+  color: #a855f7;
+  font-weight: 700;
+}
+
+.quality-legendary {
+  color: #f97316;
+  font-weight: 700;
+}
+
+.quality-mythic {
+  color: #eab308;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(234, 179, 8, 0.3);
+}
+
+/* Quality badges via data-hl (from JS table highlighter) */
+td[data-hl="epic"] {
+  color: #a855f7;
+  font-weight: 700;
+}
+td[data-hl="legendary"] {
+  color: #f97316;
+  font-weight: 700;
+}
+td[data-hl="mythic"] {
+  color: #eab308;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(234, 179, 8, 0.25);
+}
+.dark td[data-hl="epic"] {
+  color: #c084fc;
+}
+.dark td[data-hl="legendary"] {
+  color: #fb923c;
+}
+.dark td[data-hl="mythic"] {
+  color: #facc15;
+}
+
+/* Percentage values */
+td[data-hl="pct"] {
+  color: var(--vp-c-gold-3);
+  font-weight: 650;
+}
+.dark td[data-hl="pct"] {
+  color: var(--vp-c-gold-4);
+}
+
+/* --------------------------------------------------------------------------
+   23. Table Column Width — KiWeapons (气武器) Page
+   The "技能" column contains long skill descriptions (~200 chars),
+   while other columns are compact. Give proportional widths.
+   -------------------------------------------------------------------------- */
+
+._Wiki_KiWeapons_气武器 table {
+  table-layout: fixed;
+  min-width: 1000px;
+}
+
+/* Column index: 0-气武器 1-品质 2-基础属性 3-强化一级 4-强化二级 5-强化三级 6-技能 7-获得方式 */
+._Wiki_KiWeapons_气武器 th:nth-child(1),
+._Wiki_KiWeapons_气武器 td:nth-child(1) {
+  width: 11%;
+}
+
+._Wiki_KiWeapons_气武器 th:nth-child(2),
+._Wiki_KiWeapons_气武器 td:nth-child(2) {
+  width: 7%;
+}
+
+._Wiki_KiWeapons_气武器 th:nth-child(3),
+._Wiki_KiWeapons_气武器 td:nth-child(3) {
+  width: 16%;
+}
+
+._Wiki_KiWeapons_气武器 th:nth-child(4),
+._Wiki_KiWeapons_气武器 td:nth-child(4),
+._Wiki_KiWeapons_气武器 th:nth-child(5),
+._Wiki_KiWeapons_气武器 td:nth-child(5),
+._Wiki_KiWeapons_气武器 th:nth-child(6),
+._Wiki_KiWeapons_气武器 td:nth-child(6) {
+  width: 8%;
+}
+
+._Wiki_KiWeapons_气武器 th:nth-child(7),
+._Wiki_KiWeapons_气武器 td:nth-child(7) {
+  width: 45%;
+}
+
+._Wiki_KiWeapons_气武器 th:nth-child(8),
+._Wiki_KiWeapons_气武器 td:nth-child(8) {
+  width: 5%;
+}
+
+._Wiki_KiWeapons_气武器 td:nth-child(7) {
+  font-size: 0.85em;
+  line-height: 1.65;
+  text-align: left;
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* --------------------------------------------------------------------------
+   24. Table Data Highlighting — Color-coded Attributes
+   Columns are colored based on their header text (力量=red, 灵巧=green, etc.)
+   -------------------------------------------------------------------------- */
+
+td[data-hl] {
+  font-weight: 650;
+}
+
+/* Pure number cells in non-stat tables (e.g. enhancement levels, material counts) */
+td[data-hl="num"] {
+  color: var(--vp-c-brand-3);
+  font-weight: 700;
+}
+
+/* 力量 (Strength) — Orange-Red */
+td[data-hl="str"] {
+  color: #dc2626;
+}
+
+.dark td[data-hl="str"] {
+  color: #f87171;
+}
+
+/* 灵巧 (Dexterity) — Green */
+td[data-hl="dex"] {
+  color: #16a34a;
+}
+
+.dark td[data-hl="dex"] {
+  color: #4ade80;
+}
+
+/* 意志 (Willpower) — Blue */
+td[data-hl="wil"] {
+  color: #2563eb;
+}
+
+.dark td[data-hl="wil"] {
+  color: #60a5fa;
+}
+
+/* 血量 (HP) — Deep Red */
+td[data-hl="hp"] {
+  color: #dc2626;
+}
+
+.dark td[data-hl="hp"] {
+  color: #f87171;
+}
+
+/* 耐力 (Stamina) — Gold */
+td[data-hl="end"] {
+  color: #ca8a04;
+}
+
+.dark td[data-hl="end"] {
+  color: #fbbf24;
+}
+
+/* 气 (Ki) — Cyan */
+td[data-hl="ki"] {
+  color: #0891b2;
+}
+
+.dark td[data-hl="ki"] {
+  color: #22d3ee;
+}
+
+/* Grade letters (S/A/B/C) — overview table */
+td[data-grade] {
+  font-weight: 700;
+}
+
+td[data-grade="s"] {
+  color: #eab308;
+}
+
+td[data-grade="a"] {
+  color: #22c55e;
+}
+
+td[data-grade="b"] {
+  color: #3b82f6;
+}
+
+td[data-grade="c"] {
+  color: #6b7280;
+}
+
+td[data-grade="d"] {
+  color: #ef4444;
+}
+
+.dark td[data-grade="c"] {
+  color: #9ca3af;
+}
+
+/* Allow header wrapping for 强化属性 columns */
+._Wiki_KiWeapons_气武器 th:nth-child(4),
+._Wiki_KiWeapons_气武器 th:nth-child(5),
+._Wiki_KiWeapons_气武器 th:nth-child(6) {
+  font-size: 0.78em;
+  line-height: 1.4;
+  white-space: normal;
+  vertical-align: middle;
+}
+
+/* Ensure the text in "技能" cells wraps properly */
+._Wiki_KiWeapons_气武器 th:nth-child(7) {
+  white-space: normal;
+}
+
+/* Responsive: on narrow screens, allow horizontal scroll */
+@media (max-width: 960px) {
+  ._Wiki_KiWeapons_气武器 table {
+    min-width: 800px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   24. Wiki Number Highlighting — Auto-colored values throughout content
+   -------------------------------------------------------------------------- */
+
+/* 🟠 Core combat stats — plugin-generated */
+.kn-stat {
+  color: var(--vp-c-orange-3);
+  font-weight: 600;
+}
+
+.dark .kn-stat {
+  color: var(--vp-c-orange-4);
+}
+
+/* 🟠 Core combat stats — race stat table columns
+   Race tables: [形态名称 | 力量加成 | 灵巧加成 | 意志加成 | 形态消耗 | 天赋]
+   Columns 2-4 (力量/灵巧/意志) are pure number cells.
+   Target via page-level class prefix _Wiki_race_ so it doesn't leak
+   into KiWeapons (气武器) or 装备 pages. */
+[class*="_Wiki_race_"] table td:nth-child(2),
+[class*="_Wiki_race_"] table td:nth-child(3),
+[class*="_Wiki_race_"] table td:nth-child(4) {
+  color: var(--vp-c-orange-3);
+  font-weight: 600;
+  font-size: 1.05em;
+}
+
+.dark [class*="_Wiki_race_"] table td:nth-child(2),
+.dark [class*="_Wiki_race_"] table td:nth-child(3),
+.dark [class*="_Wiki_race_"] table td:nth-child(4) {
+  color: var(--vp-c-orange-4);
+}
+
+/* 🟢 Percentage gains (提高 X%) */
+.kn-pct {
+  color: var(--vp-c-green-2);
+  font-weight: 600;
+}
+
+.dark .kn-pct {
+  color: var(--vp-c-green-3);
+}
+
+/* 🔵 Health/energy resources (血量/气/耐力/生命上限) */
+.kn-resource {
+  color: var(--vp-c-blue-3);
+  font-weight: 600;
+}
+
+.dark .kn-resource {
+  color: var(--vp-c-blue-4);
+}
+
+/* 🟣 Damage values (近战伤害/气功伤害/反伤) */
+.kn-damage {
+  color: #a855f7;
+  font-weight: 600;
+}
+
+.dark .kn-damage {
+  color: #c084fc;
+}
+
+/* 🟡 Time values (持续/冷却/秒/分钟) */
+.kn-time {
+  color: var(--vp-c-gold-4);
+  font-weight: 600;
+}
+
+.dark .kn-time {
+  color: #facc15;
+}
+
+/* 🔴 Negative / debuff values */
+.kn-neg {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.dark .kn-neg {
+  color: #f87171;
+}
+
+/* 🔷 Range / level / quantity (格/级/×/阶) */
+.kn-range {
+  color: #06b6d4;
+  font-weight: 600;
+}
+
+.dark .kn-range {
+  color: #22d3ee;
+}
+
+/* ==========================================================================
+   Phase 2 (2.5) — Table Row Hover Scale & Quality Glow & Mobile Scroll Hint
+   行悬停放大微效果 + 品质发光 + 移动端水平滚动视觉提示
+   ========================================================================== */
+
+/* 行悬停微放大 — scale 1.01，配合 z-index 层叠 */
+tbody tr {
+  position: relative;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+tbody tr:hover {
+  transform: scale(1.01);
+  transform-origin: center;
+  z-index: 1;
+  box-shadow:
+    0 4px 14px -6px rgba(0, 0, 0, 0.18),
+    0 0 0 1px var(--vp-c-brand-soft);
+}
+
+.dark tbody tr:hover {
+  box-shadow:
+    0 4px 14px -6px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(249, 115, 22, 0.25);
+}
+
+/* 品质颜色发光 — epic / legendary 增加 text-shadow 光晕 */
+td[data-hl="epic"],
+.quality-epic {
+  text-shadow: 0 0 8px rgba(168, 85, 247, 0.35);
+}
+
+td[data-hl="legendary"],
+.quality-legendary {
+  text-shadow: 0 0 8px rgba(249, 115, 22, 0.4);
+}
+
+/* mythic 已有基础光晕，悬停时增强 */
+tbody tr:hover td[data-hl="mythic"],
+tbody tr:hover .quality-mythic {
+  text-shadow: 0 0 12px rgba(234, 179, 8, 0.6);
+}
+
+/* 等级字母发光 — S 级金色光晕 */
+td[data-grade="s"] {
+  text-shadow: 0 0 8px rgba(234, 179, 8, 0.45);
+}
+
+/* 移动端水平滚动视觉提示 — 右侧渐隐遮罩 + 边缘高光 */
+.vp-doc .table-wrap {
+  position: relative;
+}
+
+@media (max-width: 640px) {
+  .vp-doc .table-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 32px;
+    pointer-events: none;
+    background: linear-gradient(
+      270deg,
+      var(--vp-c-bg) 0%,
+      transparent 100%
+    );
+    border-left: 1px solid var(--vp-c-divider);
+    border-radius: 0 10px 10px 0;
+  }
+
+  .dark .vp-doc .table-wrap::after {
+    background: linear-gradient(
+      270deg,
+      var(--vp-c-bg) 0%,
+      transparent 100%
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  tbody tr {
+    transition: none;
+  }
+  tbody tr:hover {
+    transform: none;
+  }
+}
+
+/* ==========================================================================
+   Phase 2.6 — Mythic Breathing Glow Animation & Mobile Scroll Hint Refinement
+   神话品质徽章/单元格缓慢呼吸发光动画 + 暗色模式 + reduced-motion 适配
+   ========================================================================== */
+
+/* 呼吸发光关键帧 — opacity 与 text-shadow 双通道脉动 */
+@keyframes vp-mythic-breathe {
+  0%,
+  100% {
+    text-shadow:
+      0 0 6px rgba(234, 179, 8, 0.25),
+      0 0 12px rgba(234, 179, 8, 0.12);
+    box-shadow:
+      0 0 0 1px rgba(234, 179, 8, 0.2),
+      0 0 8px -2px rgba(234, 179, 8, 0.3);
+  }
+  50% {
+    text-shadow:
+      0 0 10px rgba(234, 179, 8, 0.55),
+      0 0 20px rgba(234, 179, 8, 0.3);
+    box-shadow:
+      0 0 0 1px rgba(234, 179, 8, 0.4),
+      0 0 16px -2px rgba(234, 179, 8, 0.55);
+  }
+}
+
+/* 神话徽章呼吸动画 — 应用到品质徽章与表格单元格 */
+.vp-badge.mythic,
+td[data-hl="mythic"] {
+  animation: vp-mythic-breathe 3.2s ease-in-out infinite;
+}
+
+/* 暗色模式 — 提高光晕强度以适配深背景 */
+.dark .vp-badge.mythic,
+.dark td[data-hl="mythic"] {
+  animation-name: vp-mythic-breathe-dark;
+}
+
+@keyframes vp-mythic-breathe-dark {
+  0%,
+  100% {
+    text-shadow:
+      0 0 8px rgba(250, 204, 21, 0.4),
+      0 0 16px rgba(250, 204, 21, 0.18);
+    box-shadow:
+      0 0 0 1px rgba(250, 204, 21, 0.25),
+      0 0 10px -2px rgba(250, 204, 21, 0.35);
+  }
+  50% {
+    text-shadow:
+      0 0 14px rgba(250, 204, 21, 0.7),
+      0 0 26px rgba(250, 204, 21, 0.4);
+    box-shadow:
+      0 0 0 1px rgba(250, 204, 21, 0.5),
+      0 0 20px -2px rgba(250, 204, 21, 0.6);
+  }
+}
+
+/* 行悬停时让呼吸动画略微加速，突出当前行 */
+tbody tr:hover .vp-badge.mythic,
+tbody tr:hover td[data-hl="mythic"] {
+  animation-duration: 2s;
+}
+
+/* 暗色模式下移动端滚动提示渐变使用更深背景 */
+@media (max-width: 640px) {
+  .dark .vp-doc .table-wrap::after {
+    background: linear-gradient(
+      270deg,
+      var(--vp-c-bg) 0%,
+      transparent 100%
+    );
+    border-left-color: var(--vp-c-divider);
+  }
+
+  /* 左侧也添加提示，避免双向滚动时左侧无指示 */
+  .vp-doc .table-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 24px;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      var(--vp-c-bg) 0%,
+      transparent 100%
+    );
+    border-radius: 10px 0 0 10px;
+    z-index: 1;
+  }
+
+  .dark .vp-doc .table-wrap::before {
+    background: linear-gradient(
+      90deg,
+      var(--vp-c-bg) 0%,
+      transparent 100%
+    );
+  }
+}
+
+/* reduced-motion — 关闭呼吸动画与行悬停过渡，仅保留颜色变化 */
+@media (prefers-reduced-motion: reduce) {
+  .vp-badge.mythic,
+  td[data-hl="mythic"] {
+    animation: none;
+    text-shadow: 0 0 8px rgba(234, 179, 8, 0.4);
+  }
+
+  .dark .vp-badge.mythic,
+  .dark td[data-hl="mythic"] {
+    text-shadow: 0 0 10px rgba(250, 204, 21, 0.5);
+  }
+}
