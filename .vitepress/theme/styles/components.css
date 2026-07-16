@@ -267,6 +267,112 @@
 }
 
 /* ==========================================================================
+   Phase 3 (Appended) — Custom Block Left Icon Decoration
+   自定义块左侧图标装饰：info ℹ️ / tip 💡 / warning ⚠️ / danger 🚫
+   覆盖 Phase 2 装饰条 ::before，改用 emoji 图标
+   ========================================================================== */
+
+/* 图标基础样式（覆盖上方装饰条几何：宽度/位置/圆角/背景） */
+.custom-block::before {
+  content: '';
+  width: auto;
+  height: auto;
+  top: 14px;
+  bottom: auto;
+  left: 8px;
+  border-radius: 0;
+  background: transparent;
+  opacity: 1;
+  font-size: 1.05rem;
+  line-height: 1;
+  pointer-events: none;
+  transition: transform 0.25s ease;
+}
+
+.custom-block:hover::before {
+  transform: scale(1.12);
+}
+
+/* 各类型 emoji 图标 + 主题色（同时清空上方渐变条背景） */
+.custom-block.info::before {
+  content: 'ℹ️';
+  background: transparent;
+}
+
+.custom-block.tip::before {
+  content: '💡';
+  background: transparent;
+}
+
+.custom-block.warning::before {
+  content: '⚠️';
+  background: transparent;
+}
+
+.custom-block.danger::before {
+  content: '🚫';
+  background: transparent;
+}
+
+/* 暗色模式：图标微降亮度避免过曝 */
+.dark .custom-block::before {
+  filter: brightness(0.92);
+}
+
+/* --------------------------------------------------------------------
+   Blockquote 悬停左边框发光（增强）
+   注：blockquote 使用 border-image 渐变，border-color 无效，故用左侧 box-shadow 营造发光
+   -------------------------------------------------------------------- */
+
+.vp-doc blockquote {
+  transition: box-shadow 0.3s ease;
+}
+
+.vp-doc blockquote:hover {
+  box-shadow: -6px 0 18px var(--vp-c-brand-soft),
+              0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.dark .vp-doc blockquote:hover {
+  box-shadow: -6px 0 22px rgba(0, 0, 0, 0.5),
+              0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* --------------------------------------------------------------------
+   代码块悬停边框发光（使用 --vp-c-brand-soft）
+   -------------------------------------------------------------------- */
+
+.vp-doc pre {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vp-doc pre:hover {
+  border-color: var(--vp-c-brand-soft);
+  box-shadow: 0 0 12px var(--vp-c-brand-soft);
+}
+
+.dark .vp-doc pre:hover {
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.5);
+}
+
+/* --------------------------------------------------------------------
+   prefers-reduced-motion — 关闭所有过渡与变换
+   -------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .custom-block,
+  .custom-block::before,
+  .vp-doc blockquote,
+  .vp-doc pre {
+    transition: none !important;
+  }
+
+  .custom-block:hover::before {
+    transform: none;
+  }
+}
+
+/* ==========================================================================
    Phase 3 — Enhancement: Custom Block Icons / Blockquote Glow / Code Glow
    自定义块图标装饰 + blockquote 悬停发光 + 代码块边框发光（仅追加，不改现有内容）
    ========================================================================== */
