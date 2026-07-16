@@ -1,11 +1,24 @@
+/* ==========================================================================
+   奇沌龙珠 Wiki — 全站翻新主题
+   Module: components
+   自定义块 / 按钮 / 代码块 / 徽章 / 页脚 / blockquote / 代码块发光
+   ========================================================================== */
+
 /* --------------------------------------------------------------------------
    9. Custom Blocks — Info, Tip, Warning, Danger
    -------------------------------------------------------------------------- */
 
+:root {
+  --vp-custom-block-tip-border: var(--vp-c-gold-2);
+  --vp-custom-block-tip-text: var(--vp-c-text-1);
+  --vp-custom-block-tip-bg: var(--vp-c-gold-soft);
+}
+
 .custom-block {
   border-radius: 10px;
-  padding: 16px 20px;
+  padding: 16px 20px 16px 36px;
   margin: 20px 0;
+  position: relative;
   transition: box-shadow 0.2s ease;
 }
 
@@ -13,12 +26,26 @@
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
-/* Tip — Gold / Super Saiyan */
-:root {
-  --vp-custom-block-tip-border: var(--vp-c-gold-2);
-  --vp-custom-block-tip-text: var(--vp-c-text-1);
-  --vp-custom-block-tip-bg: var(--vp-c-gold-soft);
+/* Emoji icons via ::before */
+.custom-block::before {
+  content: '';
+  position: absolute;
+  top: 14px;
+  left: 10px;
+  font-size: 1.05rem;
+  line-height: 1;
+  pointer-events: none;
+  transition: transform 0.25s ease;
 }
+
+.custom-block:hover::before {
+  transform: scale(1.15);
+}
+
+.custom-block.info::before    { content: 'ℹ️'; }
+.custom-block.tip::before     { content: '💡'; }
+.custom-block.warning::before { content: '⚠️'; }
+.custom-block.danger::before  { content: '🚫'; }
 
 /* Info — Blue / Ki */
 .custom-block.info {
@@ -51,6 +78,48 @@
 
 .custom-block.danger .custom-block-title {
   color: var(--vp-c-purple-2);
+}
+
+/* Dark mode: slightly dim emoji */
+.dark .custom-block::before {
+  filter: brightness(0.92);
+}
+
+/* --------------------------------------------------------------------------
+   10. Blockquote — Theme + Hover glow
+   -------------------------------------------------------------------------- */
+
+.vp-doc blockquote {
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.vp-doc blockquote::before {
+  content: '\201C';
+  position: absolute;
+  top: -8px;
+  left: 8px;
+  font-size: 3.2rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  line-height: 1;
+  color: var(--vp-c-brand-3);
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+.vp-doc blockquote p {
+  position: relative;
+}
+
+.vp-doc blockquote:hover {
+  box-shadow: -6px 0 18px var(--vp-c-brand-soft),
+              0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.dark .vp-doc blockquote:hover {
+  box-shadow: -6px 0 22px rgba(249, 115, 22, 0.35),
+              0 2px 12px rgba(0, 0, 0, 0.3);
 }
 
 /* --------------------------------------------------------------------------
@@ -110,6 +179,31 @@
   line-height: 1.6;
 }
 
+/* Code block container — hover border glow */
+.vp-doc div[class*='language-'] {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.vp-doc div[class*='language-']:hover {
+  border-color: var(--vp-c-brand-soft);
+  box-shadow: 0 0 14px -2px var(--vp-c-brand-soft),
+              0 6px 18px -4px rgba(0, 0, 0, 0.12);
+}
+
+.dark .vp-doc div[class*='language-'] {
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.4);
+}
+
+.dark .vp-doc div[class*='language-']:hover {
+  border-color: rgba(249, 115, 22, 0.4);
+  box-shadow: 0 0 16px -2px rgba(249, 115, 22, 0.3),
+              0 6px 18px -4px rgba(0, 0, 0, 0.5);
+}
+
 /* --------------------------------------------------------------------------
    15. Badges
    -------------------------------------------------------------------------- */
@@ -156,336 +250,19 @@
   opacity: 0.6;
 }
 
-/* ==========================================================================
-   Phase 2 (2.7) — Custom Block Left Colored Decoration & Blockquote Tweaks
-   自定义块左侧彩色图标装饰条 + blockquote 样式微调
-   ========================================================================== */
-
-/* 自定义块左侧彩色装饰条 — 用 ::before 绘制渐变竖条 + 图标圆点 */
-.custom-block {
-  position: relative;
-  padding-left: 24px;
-}
-
-.custom-block::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 8px;
-  bottom: 8px;
-  width: 4px;
-  border-radius: 4px;
-  background: linear-gradient(
-    180deg,
-    var(--vp-c-brand-3),
-    var(--vp-c-gold-4)
-  );
-  opacity: 0.85;
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-
-.custom-block:hover::before {
-  opacity: 1;
-  transform: scaleY(1.04);
-}
-
-/* 各类型自定义块对应主题色的装饰条 */
-.custom-block.tip::before {
-  background: linear-gradient(180deg, var(--vp-c-gold-3), var(--vp-c-gold-4));
-}
-
-.custom-block.info::before {
-  background: linear-gradient(180deg, var(--vp-c-blue-2), var(--vp-c-blue-4));
-}
-
-.custom-block.warning::before {
-  background: linear-gradient(180deg, var(--vp-c-orange-2), var(--vp-c-orange-3));
-}
-
-.custom-block.danger::before {
-  background: linear-gradient(180deg, var(--vp-c-purple-1), var(--vp-c-purple-3));
-}
-
-/* 自定义块标题左侧彩色圆点装饰 */
-.custom-block-title {
-  position: relative;
-  padding-left: 14px;
-}
-
-.custom-block-title::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: currentColor;
-  box-shadow: 0 0 8px currentColor;
-  transform: translateY(-50%);
-}
-
-/* --------------------------------------------------------------------
-   Blockquote 样式微调 — 装饰引号 + 渐入 + 悬停
-   基础样式位于 typography.css，此处仅做装饰性微调
-   -------------------------------------------------------------------- */
-
-.vp-doc blockquote {
-  position: relative;
-  overflow: hidden;
-}
-
-.vp-doc blockquote::before {
-  content: '\201C';
-  position: absolute;
-  top: -8px;
-  left: 8px;
-  font-size: 3.2rem;
-  font-family: Georgia, 'Times New Roman', serif;
-  line-height: 1;
-  color: var(--vp-c-brand-3);
-  opacity: 0.18;
-  pointer-events: none;
-}
-
-.vp-doc blockquote p {
-  position: relative;
-}
-
-.vp-doc blockquote:hover {
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-}
-
-.dark .vp-doc blockquote:hover {
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .custom-block::before {
-    transition: none;
-  }
-}
-
-/* ==========================================================================
-   Phase 3 (Appended) — Custom Block Left Icon Decoration
-   自定义块左侧图标装饰：info ℹ️ / tip 💡 / warning ⚠️ / danger 🚫
-   覆盖 Phase 2 装饰条 ::before，改用 emoji 图标
-   ========================================================================== */
-
-/* 图标基础样式（覆盖上方装饰条几何：宽度/位置/圆角/背景） */
-.custom-block::before {
-  content: '';
-  width: auto;
-  height: auto;
-  top: 14px;
-  bottom: auto;
-  left: 8px;
-  border-radius: 0;
-  background: transparent;
-  opacity: 1;
-  font-size: 1.05rem;
-  line-height: 1;
-  pointer-events: none;
-  transition: transform 0.25s ease;
-}
-
-.custom-block:hover::before {
-  transform: scale(1.12);
-}
-
-/* 各类型 emoji 图标 + 主题色（同时清空上方渐变条背景） */
-.custom-block.info::before {
-  content: 'ℹ️';
-  background: transparent;
-}
-
-.custom-block.tip::before {
-  content: '💡';
-  background: transparent;
-}
-
-.custom-block.warning::before {
-  content: '⚠️';
-  background: transparent;
-}
-
-.custom-block.danger::before {
-  content: '🚫';
-  background: transparent;
-}
-
-/* 暗色模式：图标微降亮度避免过曝 */
-.dark .custom-block::before {
-  filter: brightness(0.92);
-}
-
-/* --------------------------------------------------------------------
-   Blockquote 悬停左边框发光（增强）
-   注：blockquote 使用 border-image 渐变，border-color 无效，故用左侧 box-shadow 营造发光
-   -------------------------------------------------------------------- */
-
-.vp-doc blockquote {
-  transition: box-shadow 0.3s ease;
-}
-
-.vp-doc blockquote:hover {
-  box-shadow: -6px 0 18px var(--vp-c-brand-soft),
-              0 2px 12px rgba(0, 0, 0, 0.06);
-}
-
-.dark .vp-doc blockquote:hover {
-  box-shadow: -6px 0 22px rgba(0, 0, 0, 0.5),
-              0 2px 12px rgba(0, 0, 0, 0.3);
-}
-
-/* --------------------------------------------------------------------
-   代码块悬停边框发光（使用 --vp-c-brand-soft）
-   -------------------------------------------------------------------- */
-
-.vp-doc pre {
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.vp-doc pre:hover {
-  border-color: var(--vp-c-brand-soft);
-  box-shadow: 0 0 12px var(--vp-c-brand-soft);
-}
-
-.dark .vp-doc pre:hover {
-  box-shadow: 0 0 14px rgba(0, 0, 0, 0.5);
-}
-
-/* --------------------------------------------------------------------
-   prefers-reduced-motion — 关闭所有过渡与变换
-   -------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   Accessibility — reduced motion
+   -------------------------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {
   .custom-block,
   .custom-block::before,
   .vp-doc blockquote,
-  .vp-doc pre {
+  .vp-doc div[class*='language-'] {
     transition: none !important;
   }
 
   .custom-block:hover::before {
-    transform: none;
-  }
-}
-
-/* ==========================================================================
-   Phase 3 — Enhancement: Custom Block Icons / Blockquote Glow / Code Glow
-   自定义块图标装饰 + blockquote 悬停发光 + 代码块边框发光（仅追加，不改现有内容）
-   ========================================================================== */
-
-/* 1. 自定义块左侧彩色图标装饰
-   说明：.custom-block::before 已被现有渐变装饰条占用，故以 ::after 追加图标字符，
-   既保留装饰条，又叠加对应类型的彩色图标。 */
-.custom-block::after {
-  content: '';
-  position: absolute;
-  left: 9px;
-  top: 12px;
-  font-size: 15px;
-  line-height: 1;
-  font-weight: 700;
-  font-family: 'Segoe UI Symbol', 'Apple Symbols', 'Symbol', sans-serif;
-  opacity: 0.55;
-  pointer-events: none;
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-
-.custom-block:hover::after {
-  opacity: 0.95;
-  transform: scale(1.12);
-}
-
-.dark .custom-block::after {
-  opacity: 0.7;
-}
-
-.dark .custom-block:hover::after {
-  opacity: 1;
-}
-
-/* 各类型自定义块对应彩色图标字符（\fe0e 强制文本呈现，使 color 生效） */
-.custom-block.info::after {
-  content: '\2139\fe0e';
-  color: var(--vp-c-blue-2);
-}
-
-.custom-block.tip::after {
-  content: '\2726';
-  color: var(--vp-c-gold-3);
-}
-
-.custom-block.warning::after {
-  content: '\26a0\fe0e';
-  color: var(--vp-c-orange-2);
-}
-
-.custom-block.danger::after {
-  content: '\2715';
-  color: var(--vp-c-purple-2);
-}
-
-/* 2. blockquote 样式微调 — 悬停时左边框变亮发光 */
-.vp-doc blockquote {
-  border-left-color: var(--vp-c-divider);
-  transition:
-    border-left-color 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-.vp-doc blockquote:hover {
-  border-left-color: var(--vp-c-brand-3);
-  box-shadow:
-    -4px 0 14px -4px var(--vp-c-brand-soft),
-    0 2px 12px rgba(0, 0, 0, 0.06);
-}
-
-.dark .vp-doc blockquote:hover {
-  border-left-color: var(--vp-c-orange-3);
-  box-shadow:
-    -4px 0 16px -4px rgba(249, 115, 22, 0.35),
-    0 2px 12px rgba(0, 0, 0, 0.3);
-}
-
-/* 3. 代码块边框发光 — 作用于可见容器
-   （.vp-doc pre 自身发光会被外层 overflow:hidden 裁剪，故目标为 language- 容器） */
-.vp-doc div[class*='language-'] {
-  border: 1px solid var(--vp-c-divider);
-  box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.08);
-  transition:
-    box-shadow 0.25s ease,
-    border-color 0.25s ease;
-}
-
-.vp-doc div[class*='language-']:hover {
-  border-color: var(--vp-c-brand-soft);
-  box-shadow:
-    0 0 14px -2px var(--vp-c-brand-soft),
-    0 6px 18px -4px rgba(0, 0, 0, 0.12);
-}
-
-.dark .vp-doc div[class*='language-'] {
-  border-color: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.4);
-}
-
-.dark .vp-doc div[class*='language-']:hover {
-  border-color: rgba(249, 115, 22, 0.4);
-  box-shadow:
-    0 0 16px -2px rgba(249, 115, 22, 0.3),
-    0 6px 18px -4px rgba(0, 0, 0, 0.5);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .custom-block::after,
-  .vp-doc blockquote,
-  .vp-doc div[class*='language-'] {
-    transition: none;
-  }
-  .custom-block:hover::after {
     transform: none;
   }
 }
