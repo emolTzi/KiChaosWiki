@@ -1,4 +1,4 @@
-﻿import { defineConfig } from 'vitepress'
+import { defineConfig } from 'vitepress'
 import wikiNumberPlugin from './plugins/wiki-numbers.js'
 
 const raceSidebar = [
@@ -96,6 +96,8 @@ export default defineConfig({
           { text: 'VIP礼包', link: '/Wiki/装备/VIP礼包' },
         ],
       },
+      { text: '📱 手机版问题解答', link: '/Wiki/手机版问题解答' },
+      { text: '⚡ 自定义技能', link: '/Wiki/自定义技能' },
     ],
 
     sidebar: {
@@ -104,6 +106,12 @@ export default defineConfig({
       '/Wiki/装备/': equipSidebar,
       '/Wiki/KiWeapons/': [
         { text: '气武器表', link: '/Wiki/KiWeapons/气武器' },
+      ],
+      '/Wiki/手机版问题解答/': [
+        { text: '手机版问题解答', link: '/Wiki/手机版问题解答' },
+      ],
+      '/Wiki/自定义技能/': [
+        { text: '自定义技能', link: '/Wiki/自定义技能' },
       ],
     },
 
