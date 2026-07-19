@@ -52,6 +52,7 @@ const equipSidebar = [
   { text: '装备强化', link: '/Wiki/装备/装备强化' },
   { text: '称号分类', link: '/Wiki/装备/称号分类' },
   { text: 'VIP礼包', link: '/Wiki/装备/VIP礼包' },
+  { text: '通行证系统', link: '/Wiki/装备/通行证系统' },
 ]
 
 export default defineConfig({
@@ -94,6 +95,7 @@ export default defineConfig({
           { text: '装备强化', link: '/Wiki/装备/装备强化' },
           { text: '称号分类', link: '/Wiki/装备/称号分类' },
           { text: 'VIP礼包', link: '/Wiki/装备/VIP礼包' },
+          { text: '通行证系统', link: '/Wiki/装备/通行证系统' },
         ],
       },
     ],
