@@ -48,53 +48,26 @@ function colorize(text: string): string {
 
 <style scoped>
 .ki-set-effect {
-  position: relative;
-  overflow: hidden;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
+  border-radius: 10px;
   padding: 20px 24px;
   margin: 20px 0;
   background: var(--vp-c-bg-soft);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.ki-set-effect::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--vp-c-brand-3), var(--vp-c-gold-4), var(--vp-c-blue-3));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
+  transition: box-shadow 200ms ease, border-color 200ms ease;
 }
 
 .ki-set-effect:hover {
-  transform: translateY(-2px);
   border-color: var(--vp-c-brand-soft);
-  box-shadow: 0 8px 24px -8px rgba(234, 88, 12, 0.18);
-}
-
-.ki-set-effect:hover::before {
-  transform: scaleX(1);
-}
-
-.dark .ki-set-effect:hover {
-  box-shadow: 0 8px 24px -8px rgba(249, 115, 22, 0.2);
+  box-shadow: var(--vp-shadow-md);
 }
 
 .set-title {
-  font-size: 1.2rem !important;
-  font-weight: 700 !important;
+  font-size: 1.15rem !important;
+  font-weight: 600 !important;
   margin: 0 0 16px 0 !important;
   padding-bottom: 10px !important;
-  border-bottom: 2px solid;
-  border-image: linear-gradient(90deg, var(--vp-c-brand-3), var(--vp-c-gold-4), transparent) 1;
-  color: var(--vp-c-brand-1) !important;
-  -webkit-text-fill-color: var(--vp-c-brand-1) !important;
-  background: none !important;
+  border-bottom: 2px solid var(--vp-c-divider);
+  color: var(--vp-c-text-1) !important;
 }
 
 .set-piece {
@@ -109,18 +82,14 @@ function colorize(text: string): string {
 }
 
 .piece-label {
-  font-weight: 650;
-  font-size: 0.85em;
-  color: var(--vp-c-gold-3);
+  font-weight: 600;
+  font-size: 0.82em;
+  color: var(--vp-c-brand-1);
   white-space: nowrap;
   min-width: 72px;
   padding: 1px 8px 0;
-  border-radius: 6px;
-  background: var(--vp-c-gold-bg);
-}
-
-.dark .piece-label {
-  color: var(--vp-c-gold-4);
+  border-radius: 4px;
+  background: var(--vp-c-brand-bg);
 }
 
 .piece-desc {
@@ -131,24 +100,25 @@ function colorize(text: string): string {
 
 .set-skill {
   margin-top: 16px;
-  padding: 16px 16px 16px 20px;
-  background: var(--vp-c-brand-bg);
-  border: 1px solid var(--vp-c-brand-soft);
-  border-left: 4px solid var(--vp-c-brand-3);
-  border-radius: 0 10px 10px 0;
+  padding: 16px;
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
+  border-left: 3px solid var(--vp-c-brand-1);
+  border-radius: 0 8px 8px 0;
 }
 
 .skill-header {
-  font-weight: 700;
-  font-size: 0.92em;
+  font-weight: 600;
+  font-size: 0.9em;
   margin-bottom: 8px;
-  color: var(--vp-c-brand-2);
+  color: var(--vp-c-text-1);
 }
 
 .skill-desc {
   font-size: 0.88em;
   line-height: 1.7;
   white-space: pre-wrap;
+  color: var(--vp-c-text-2);
 }
 
 .solo {

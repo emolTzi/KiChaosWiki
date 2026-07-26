@@ -33,42 +33,26 @@ defineProps<{
   gap: 16px;
   align-items: flex-start;
   padding: 20px;
-  border-radius: 14px;
+  border-radius: 10px;
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-soft);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
   color: inherit;
   margin: 16px 0;
   position: relative;
-  overflow: hidden;
-}
-
-.ki-race-card::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background: linear-gradient(180deg, var(--vp-c-brand-3), var(--vp-c-gold-4));
-  border-radius: 0 2px 2px 0;
+  border-left: 3px solid var(--vp-c-brand-1);
+  transition: box-shadow 200ms ease, border-color 200ms ease;
 }
 
 .ki-race-card:hover {
-  transform: translateX(4px);
   border-color: var(--vp-c-brand-soft);
-  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.1);
-}
-
-.dark .ki-race-card:hover {
-  box-shadow: 0 8px 24px -6px rgba(249, 115, 22, 0.12);
+  box-shadow: var(--vp-shadow-md);
 }
 
 .card-emoji {
-  font-size: 2rem;
-  width: 48px;
-  height: 48px;
+  font-size: 1.6rem;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,27 +65,23 @@ defineProps<{
 }
 
 .card-title {
-  font-size: 1.15rem;
-  font-weight: 700;
+  font-size: 1.1rem;
+  font-weight: 600;
   margin: 0 0 6px 0 !important;
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-text-1);
 }
 
 .card-desc {
   margin: 0 0 8px 0 !important;
   font-size: 0.9em;
   line-height: 1.6;
-  opacity: 0.8;
+  color: var(--vp-c-text-2);
 }
 
 .card-forms {
   display: inline-block;
   font-size: 0.82em;
-  color: var(--vp-c-gold-3);
+  color: var(--vp-c-brand-1);
   font-weight: 500;
-}
-
-.dark .card-forms {
-  color: var(--vp-c-gold-4);
 }
 </style>

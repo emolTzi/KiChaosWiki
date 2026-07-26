@@ -1,75 +1,81 @@
-/* --------------------------------------------------------------------------
-   1. Color System 鈥?Dragon Ball Palette
-   -------------------------------------------------------------------------- */
+/* ==========================================================================
+   奇沌龙珠 Wiki — Apple 风格色彩系统
+   Minimalist color system inspired by Apple design principles.
+   Brand orange is preserved as accent, used sparingly.
+   ========================================================================== */
 
 :root {
-  /* 馃煚 Dragon Ball Orange 鈥?brand primary */
-  --vp-c-orange-1: #c2410c;
-  --vp-c-orange-2: #ea580c;
-  --vp-c-orange-3: #f97316;
-  --vp-c-orange-4: #fb923c;
-  --vp-c-orange-soft: rgba(234, 88, 12, 0.12);
-  --vp-c-orange-bg: rgba(234, 88, 12, 0.06);
+  /* 🔶 Brand Orange — single accent point */
+  --vp-c-orange: #e85500;
 
-  /* 馃數 Ki Blue 鈥?accent */
-  --vp-c-blue-1: #1d4ed8;
-  --vp-c-blue-2: #2563eb;
-  --vp-c-blue-3: #3b82f6;
-  --vp-c-blue-4: #60a5fa;
-  --vp-c-blue-soft: rgba(37, 99, 235, 0.12);
-  --vp-c-blue-bg: rgba(37, 99, 235, 0.06);
+  /* 🌫️ Neutrals — Apple-style gray scale */
+  --vp-c-gray-50: #f9f9f9;
+  --vp-c-gray-100: #f2f2f3;
+  --vp-c-gray-200: #e5e5e6;
+  --vp-c-gray-300: #d1d1d4;
+  --vp-c-gray-400: #a1a1a6;
+  --vp-c-gray-500: #6e6e73;
+  --vp-c-gray-600: #48484a;
+  --vp-c-gray-700: #363638;
+  --vp-c-gray-800: #222224;
+  --vp-c-gray-900: #111113;
 
-  /* 馃煛 Super Saiyan Gold 鈥?tip/warning */
-  --vp-c-gold-1: #92400e;
-  --vp-c-gold-2: #a16207;
-  --vp-c-gold-3: #ca8a04;
-  --vp-c-gold-4: #eab308;
-  --vp-c-gold-soft: rgba(202, 138, 4, 0.14);
-  --vp-c-gold-bg: rgba(202, 138, 4, 0.07);
+  /* Brand mapping — Orange as minimal accent */
+  --vp-c-brand-1: var(--vp-c-orange);
+  --vp-c-brand-2: #d94d00;
+  --vp-c-brand-3: var(--vp-c-orange);
+  --vp-c-brand-soft: rgba(232, 85, 0, 0.08);
+  --vp-c-brand-bg: rgba(232, 85, 0, 0.04);
 
-  /* 馃煝 Namekian Green 鈥?success */
-  --vp-c-green-1: #166534;
-  --vp-c-green-2: #16a34a;
-  --vp-c-green-3: #22c55e;
-  --vp-c-green-soft: rgba(22, 163, 74, 0.12);
+  /* Surface colors */
+  --vp-c-bg: #ffffff;
+  --vp-c-bg-soft: #fafafa;
+  --vp-c-bg-mute: #f2f2f3;
+  --vp-c-bg-alt: #ffffff;
 
-  /* 馃煟 Majin Purple 鈥?danger/warning */
-  --vp-c-purple-1: #7e22ce;
-  --vp-c-purple-2: #a855f7;
-  --vp-c-purple-3: #c084fc;
-  --vp-c-purple-soft: rgba(168, 85, 247, 0.12);
+  /* Text */
+  --vp-c-text-1: #1d1d1f;
+  --vp-c-text-2: #6e6e73;
+  --vp-c-text-3: #a1a1a6;
 
-  /* Brand mapping */
-  --vp-c-brand-1: var(--vp-c-orange-1);
-  --vp-c-brand-2: var(--vp-c-orange-2);
-  --vp-c-brand-3: var(--vp-c-orange-3);
-  --vp-c-brand-soft: var(--vp-c-orange-soft);
+  /* Borders */
+  --vp-c-divider: rgba(0, 0, 0, 0.06);
+  --vp-c-gutter: rgba(0, 0, 0, 0.06);
 
-  /* Dark mode override handled below */
+  /* Shadows */
+  --vp-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --vp-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --vp-shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.08);
+
+  /* Layout */
+  --vp-sidebar-width: 280px;
+  --vp-nav-height: 56px;
+  --vp-layout-max-width: 1440px;
 }
 
+/* ==========================================================================
+   Dark Mode — Apple-style deep dark
+   ========================================================================== */
 .dark {
-  --vp-c-brand-1: var(--vp-c-orange-3);
-  --vp-c-brand-2: var(--vp-c-orange-2);
-  --vp-c-brand-3: var(--vp-c-orange-1);
-  --vp-c-brand-soft: rgba(249, 115, 22, 0.16);
-}
+  --vp-c-bg: #000000;
+  --vp-c-bg-soft: #1c1c1e;
+  --vp-c-bg-mute: #2c2c2e;
+  --vp-c-bg-alt: #111113;
 
-/* --------------------------------------------------------------------------
-   21. Dark Mode Enhancements
-   -------------------------------------------------------------------------- */
+  --vp-c-text-1: #f5f5f7;
+  --vp-c-text-2: #98989f;
+  --vp-c-text-3: #6e6e73;
 
-.dark {
-  --vp-c-bg: #0e0e10;
-  --vp-c-bg-soft: #151517;
-  --vp-c-bg-mute: #1c1c1f;
-  --vp-c-divider: #2a2a2e;
-}
+  --vp-c-divider: rgba(255, 255, 255, 0.08);
+  --vp-c-gutter: rgba(255, 255, 255, 0.08);
 
-.dark .VPHero .VPImage {
-  filter: drop-shadow(0 4px 12px rgba(249, 115, 22, 0.2));
-}
+  --vp-c-brand-1: #ff6b2b;
+  --vp-c-brand-2: var(--vp-c-orange);
+  --vp-c-brand-3: #ff6b2b;
+  --vp-c-brand-soft: rgba(255, 107, 43, 0.12);
+  --vp-c-brand-bg: rgba(255, 107, 43, 0.06);
 
-.dark .vp-doc img {
-  filter: brightness(0.9);
+  --vp-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --vp-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --vp-shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.5);
 }

@@ -1,45 +1,30 @@
 /* ==========================================================================
-   奇沌龙珠 Wiki — 全站翻新主题
-   Module: components
-   自定义块 / 按钮 / 代码块 / 徽章 / 页脚 / blockquote / 代码块发光
+   奇沌龙珠 Wiki — Apple 风格组件
+   Custom blocks, buttons, code blocks, badges — minimal, clean.
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   9. Custom Blocks — Info, Tip, Warning, Danger
+   Custom Blocks — Info, Tip, Warning, Danger
    -------------------------------------------------------------------------- */
 
-:root {
-  --vp-custom-block-tip-border: var(--vp-c-gold-2);
-  --vp-custom-block-tip-text: var(--vp-c-text-1);
-  --vp-custom-block-tip-bg: var(--vp-c-gold-soft);
-}
-
 .custom-block {
-  border-radius: 10px;
-  padding: 16px 20px 16px 36px;
-  margin: 20px 0;
+  border-radius: 8px;
+  padding: 14px 18px 14px 34px;
+  margin: 16px 0;
   position: relative;
-  transition: box-shadow 0.2s ease;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
 }
 
-.custom-block:hover {
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-}
-
-/* Emoji icons via ::before */
+/* Emoji icons */
 .custom-block::before {
   content: '';
   position: absolute;
-  top: 14px;
+  top: 13px;
   left: 10px;
-  font-size: 1.05rem;
+  font-size: 1rem;
   line-height: 1;
   pointer-events: none;
-  transition: transform 0.25s ease;
-}
-
-.custom-block:hover::before {
-  transform: scale(1.15);
 }
 
 .custom-block.info::before    { content: 'ℹ️'; }
@@ -47,222 +32,167 @@
 .custom-block.warning::before { content: '⚠️'; }
 .custom-block.danger::before  { content: '🚫'; }
 
-/* Info — Blue / Ki */
 .custom-block.info {
-  border-color: var(--vp-c-blue-2);
-  color: var(--vp-c-text-1);
-  background-color: var(--vp-c-blue-bg);
+  border-left: 3px solid #3b82f6;
 }
-
 .custom-block.info .custom-block-title {
-  color: var(--vp-c-blue-2);
+  color: #3b82f6;
 }
 
-/* Warning — Orange */
+.custom-block.tip {
+  border-left: 3px solid var(--vp-c-brand-1);
+}
+.custom-block.tip .custom-block-title {
+  color: var(--vp-c-brand-1);
+}
+
 .custom-block.warning {
-  border-color: var(--vp-c-orange-2);
-  color: var(--vp-c-text-1);
-  background-color: var(--vp-c-orange-bg);
+  border-left: 3px solid #ca8a04;
 }
-
 .custom-block.warning .custom-block-title {
-  color: var(--vp-c-orange-2);
+  color: #ca8a04;
 }
 
-/* Danger — Purple / Majin */
 .custom-block.danger {
-  border-color: var(--vp-c-purple-2);
-  color: var(--vp-c-text-1);
-  background-color: var(--vp-c-purple-soft);
+  border-left: 3px solid #a855f7;
 }
-
 .custom-block.danger .custom-block-title {
-  color: var(--vp-c-purple-2);
+  color: #a855f7;
 }
 
-/* Dark mode: slightly dim emoji */
-.dark .custom-block::before {
-  filter: brightness(0.92);
+/* No hover glow */
+.custom-block:hover {
+  box-shadow: none;
 }
-
-/* --------------------------------------------------------------------------
-   10. Blockquote — Theme + Hover glow
-   -------------------------------------------------------------------------- */
-
-.vp-doc blockquote {
-  position: relative;
-  overflow: hidden;
-  transition: box-shadow 0.3s ease;
-}
-
-.vp-doc blockquote::before {
-  content: '\201C';
-  position: absolute;
-  top: -8px;
-  left: 8px;
-  font-size: 3.2rem;
-  font-family: Georgia, 'Times New Roman', serif;
-  line-height: 1;
-  color: var(--vp-c-brand-3);
-  opacity: 0.18;
-  pointer-events: none;
-}
-
-.vp-doc blockquote p {
-  position: relative;
-}
-
-.vp-doc blockquote:hover {
-  box-shadow: -6px 0 18px var(--vp-c-brand-soft),
-              0 2px 12px rgba(0, 0, 0, 0.06);
-}
-
-.dark .vp-doc blockquote:hover {
-  box-shadow: -6px 0 22px rgba(249, 115, 22, 0.35),
-              0 2px 12px rgba(0, 0, 0, 0.3);
+.custom-block:hover::before {
+  transform: none;
 }
 
 /* --------------------------------------------------------------------------
-   13. Buttons — Enhanced
+   Buttons
    -------------------------------------------------------------------------- */
 
 :root {
   --vp-button-brand-border: transparent;
   --vp-button-brand-text: #ffffff;
-  --vp-button-brand-bg: var(--vp-c-orange-3);
+  --vp-button-brand-bg: var(--vp-c-brand-1);
   --vp-button-brand-hover-border: transparent;
   --vp-button-brand-hover-text: #ffffff;
-  --vp-button-brand-hover-bg: var(--vp-c-orange-2);
+  --vp-button-brand-hover-bg: var(--vp-c-brand-2);
   --vp-button-brand-active-border: transparent;
   --vp-button-brand-active-text: #ffffff;
-  --vp-button-brand-active-bg: var(--vp-c-orange-1);
+  --vp-button-brand-active-bg: var(--vp-c-brand-2);
 }
 
 .VPButton {
-  border-radius: 10px !important;
-  font-weight: 600 !important;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border-radius: 980px !important; /* Apple pill */
+  font-weight: 500 !important;
+  font-size: 0.9rem !important;
+  padding: 8px 22px !important;
+  transition: opacity 150ms ease !important;
 }
 
 .VPButton.brand {
-  background: linear-gradient(135deg, var(--vp-c-orange-2), var(--vp-c-orange-3)) !important;
-  box-shadow: 0 2px 8px rgba(234, 88, 12, 0.25);
+  background: var(--vp-c-brand-1) !important;
+  box-shadow: none !important;
 }
 
 .VPButton.brand:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(234, 88, 12, 0.35);
+  opacity: 0.85;
+  transform: none;
+  box-shadow: none;
+}
+
+.VPButton.brand:active {
+  opacity: 0.75;
 }
 
 .VPButton.alt {
   border: 1px solid var(--vp-c-divider) !important;
+  background: transparent !important;
+  color: var(--vp-c-text-1) !important;
 }
 
 .VPButton.alt:hover {
-  border-color: var(--vp-c-brand-soft) !important;
-  background: var(--vp-c-brand-bg) !important;
+  border-color: var(--vp-c-text-3) !important;
+  background: transparent !important;
 }
 
 /* --------------------------------------------------------------------------
-   14. Code blocks
-   -------------------------------------------------------------------------- */
-
-.vp-doc code {
-  border-radius: 6px;
-  padding: 2px 8px;
-  font-size: 0.88em;
-  font-weight: 500;
-}
-
-.vp-doc pre code {
-  font-size: 0.85em;
-  line-height: 1.6;
-}
-
-/* Code block container — hover border glow */
-.vp-doc div[class*='language-'] {
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 10px;
-  box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.08);
-  transition: box-shadow 0.25s ease, border-color 0.25s ease;
-}
-
-.vp-doc div[class*='language-']:hover {
-  border-color: var(--vp-c-brand-soft);
-  box-shadow: 0 0 14px -2px var(--vp-c-brand-soft),
-              0 6px 18px -4px rgba(0, 0, 0, 0.12);
-}
-
-.dark .vp-doc div[class*='language-'] {
-  border-color: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.4);
-}
-
-.dark .vp-doc div[class*='language-']:hover {
-  border-color: rgba(249, 115, 22, 0.4);
-  box-shadow: 0 0 16px -2px rgba(249, 115, 22, 0.3),
-              0 6px 18px -4px rgba(0, 0, 0, 0.5);
-}
-
-/* --------------------------------------------------------------------------
-   15. Badges
+   Badges — pill style, minimal
    -------------------------------------------------------------------------- */
 
 .vp-badge {
   display: inline-block;
   padding: 2px 10px;
-  border-radius: 20px;
+  border-radius: 100px;
   font-size: 0.78em;
-  font-weight: 600;
-  letter-spacing: 0.03em;
+  font-weight: 500;
   vertical-align: middle;
+  line-height: 1.5;
 }
 
 .vp-badge.epic {
-  background: var(--vp-c-purple-soft);
-  color: var(--vp-c-purple-2);
-  border: 1px solid var(--vp-c-purple-soft);
+  background: rgba(168, 85, 247, 0.1);
+  color: #a855f7;
 }
 
 .vp-badge.legendary {
-  background: var(--vp-c-orange-soft);
-  color: var(--vp-c-orange-3);
-  border: 1px solid var(--vp-c-orange-soft);
+  background: var(--vp-c-brand-bg);
+  color: var(--vp-c-brand-1);
 }
 
 .vp-badge.mythic {
-  background: var(--vp-c-gold-soft);
-  color: var(--vp-c-gold-4);
-  border: 1px solid var(--vp-c-gold-soft);
+  background: rgba(202, 138, 4, 0.1);
+  color: #ca8a04;
+  animation: none;
 }
 
 /* --------------------------------------------------------------------------
-   16. Footer
+   Code blocks
    -------------------------------------------------------------------------- */
 
-.VPFooter {
-  border-top: 1px solid var(--vp-c-divider);
-  padding: 24px 0;
+.vp-doc div[class*='language-'] {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  box-shadow: var(--vp-shadow-sm);
+  transition: box-shadow 150ms ease;
 }
 
-.VPFooter .copyright {
-  font-size: 0.85em;
-  opacity: 0.6;
+.vp-doc div[class*='language-']:hover {
+  border-color: var(--vp-c-divider);
+  box-shadow: var(--vp-shadow-sm);
+}
+
+/* --------------------------------------------------------------------------
+   Blockquote
+   -------------------------------------------------------------------------- */
+
+.vp-doc blockquote {
+  border-left: 3px solid var(--vp-c-brand-1);
+  background: var(--vp-c-brand-bg);
+  border-radius: 0 8px 8px 0;
+  padding: 12px 20px;
+  margin: 16px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.vp-doc blockquote::before {
+  display: none;
+}
+
+.vp-doc blockquote:hover {
+  box-shadow: none;
 }
 
 /* --------------------------------------------------------------------------
    Accessibility — reduced motion
    -------------------------------------------------------------------------- */
-
 @media (prefers-reduced-motion: reduce) {
+  .VPButton,
   .custom-block,
-  .custom-block::before,
-  .vp-doc blockquote,
   .vp-doc div[class*='language-'] {
     transition: none !important;
-  }
-
-  .custom-block:hover::before {
-    transform: none;
   }
 }

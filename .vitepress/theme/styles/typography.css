@@ -1,45 +1,50 @@
-/* --------------------------------------------------------------------------
-   2. Typography
-   -------------------------------------------------------------------------- */
+/* ==========================================================================
+   奇沌龙珠 Wiki — Apple 风格排版
+   Clean typography using system fonts, subtle hierarchy.
+   ========================================================================== */
 
 :root {
   --vp-font-family-base:
-    'Inter', 'Inter4CJK', -apple-system, BlinkMacSystemFont,
-    'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', '寰蒋闆呴粦', sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text',
+    'Inter', 'Helvetica Neue', system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji';
   --vp-font-family-mono:
-    ui-monospace, 'JetBrains Mono', 'Menlo', 'Monaco', 'Consolas',
-    'Liberation Mono', 'Courier New', monospace;
+    ui-monospace, 'SF Mono', 'JetBrains Mono', 'Menlo', 'Monaco',
+    'Consolas', 'Liberation Mono', 'Courier New', monospace;
 }
 
-/* Improve CJK readability */
+/* Base body text — comfortable reading */
 .vp-doc {
-  font-size: 15.5px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--vp-c-text-1);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .vp-doc p {
-  line-height: 1.85;
-  margin: 12px 0;
+  line-height: 1.7;
+  margin: 16px 0;
 }
 
+/* Headings — clean, weight-driven hierarchy */
 .vp-doc h1 {
-  font-size: 2.2rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  background: linear-gradient(135deg, var(--vp-c-orange-3), var(--vp-c-gold-4));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--vp-c-text-1);
   margin-bottom: 8px;
+  line-height: 1.2;
 }
 
 .vp-doc h2 {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.4rem;
+  font-weight: 650;
+  letter-spacing: -0.015em;
   margin-top: 48px;
-  padding-bottom: 12px;
-  border-bottom: 2px solid var(--vp-c-brand-soft);
-  letter-spacing: -0.01em;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--vp-c-divider);
+  color: var(--vp-c-text-1);
 }
 
 .vp-doc h2:first-child {
@@ -48,28 +53,52 @@
 
 .vp-doc h3 {
   font-size: 1.15rem;
-  font-weight: 650;
+  font-weight: 600;
   margin-top: 32px;
-  color: var(--vp-c-brand-2);
+  color: var(--vp-c-text-1);
 }
 
 .vp-doc h4 {
   font-size: 1.02rem;
   font-weight: 600;
   margin-top: 24px;
+  color: var(--vp-c-text-2);
 }
 
-/* --------------------------------------------------------------------------
-   10. Blockquotes 鈥?Themed
-   -------------------------------------------------------------------------- */
+/* Horizontal rule — subtle fade */
+.vp-doc hr {
+  margin: 40px 0;
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--vp-c-divider),
+    transparent
+  );
+}
 
+/* Links — underline on hover, brand accent */
+.vp-doc a {
+  font-weight: 500;
+  color: var(--vp-c-brand-1);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 150ms ease;
+}
+
+.vp-doc a:hover {
+  border-bottom-color: var(--vp-c-brand-soft);
+}
+
+/* Blockquote — minimal, left-accented */
 .vp-doc blockquote {
-  border-left: 4px solid;
-  border-image: linear-gradient(180deg, var(--vp-c-brand-3), var(--vp-c-gold-4)) 1;
+  border-left: 3px solid var(--vp-c-brand-1);
   background: var(--vp-c-brand-bg);
-  border-radius: 0 10px 10px 0;
+  border-radius: 0 8px 8px 0;
   padding: 12px 20px;
   margin: 16px 0;
+  color: var(--vp-c-text-2);
 }
 
 .vp-doc blockquote p {
@@ -77,19 +106,27 @@
   font-size: 0.95em;
 }
 
-/* --------------------------------------------------------------------------
-   11. Links
-   -------------------------------------------------------------------------- */
-
-.vp-doc a {
+/* Code — inline */
+.vp-doc code {
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 0.88em;
   font-weight: 500;
-  transition: all 0.2s ease;
-  color: var(--vp-c-brand-1);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
+  background: var(--vp-c-bg-mute);
+  color: var(--vp-c-text-1);
 }
 
-.vp-doc a:hover {
-  color: var(--vp-c-brand-3);
-  border-bottom-color: var(--vp-c-brand-soft);
+.vp-doc pre code {
+  font-size: 0.85em;
+  line-height: 1.6;
+  background: transparent;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .vp-doc {
+    font-size: 15px;
+  }
+  .vp-doc h1 { font-size: 1.6rem; }
+  .vp-doc h2 { font-size: 1.2rem; }
 }
