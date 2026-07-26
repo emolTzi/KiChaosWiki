@@ -141,12 +141,13 @@
   font-size: 0.85rem;
 }
 
-/* Link styling — rounded, no decor bar */
+/* Link styling — rounded, with active indicator */
 .VPSidebarItem .item .link {
   border-radius: 6px;
   transition: background 150ms ease;
   padding: 6px 12px !important;
   margin: 0 8px;
+  position: relative;
 }
 
 .VPSidebarItem .item .link:hover {
@@ -155,11 +156,29 @@
 
 .VPSidebarItem.is-active > .item .link {
   background: var(--vp-c-brand-soft);
-  font-weight: 500;
+  font-weight: 600;
+  position: relative;
 }
 
 .VPSidebarItem.is-active > .item .link .text {
   color: var(--vp-c-brand-1);
+}
+
+/* 激活项左侧品牌色指示条 */
+.VPSidebarItem.is-active > .item .link::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 18px;
+  background: var(--vp-c-brand-1);
+  border-radius: 0 3px 3px 0;
+}
+
+.VPSidebarItem.level-1.is-active > .item .link::before {
+  height: 16px;
 }
 
 /* Remove all decorative bars */
@@ -199,7 +218,7 @@
 .VPDocAsideOutline .outline-link.active {
   background: var(--vp-c-brand-soft);
   color: var(--vp-c-brand-1);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 /* --------------------------------------------------------------------------
