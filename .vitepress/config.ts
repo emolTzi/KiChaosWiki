@@ -1,4 +1,4 @@
-﻿import { defineConfig } from 'vitepress'
+import { defineConfig } from 'vitepress'
 import wikiNumberPlugin from './plugins/wiki-numbers.js'
 
 const raceSidebar = [
@@ -52,7 +52,6 @@ const equipSidebar = [
   { text: '装备强化', link: '/Wiki/装备/装备强化' },
   { text: '称号分类', link: '/Wiki/装备/称号分类' },
   { text: 'VIP礼包', link: '/Wiki/装备/VIP礼包' },
-  { text: '通行证系统', link: '/Wiki/装备/通行证系统' },
 ]
 
 export default defineConfig({
@@ -85,20 +84,20 @@ export default defineConfig({
     siteTitle: '奇沌龙珠 Wiki',
 
     nav: [
-      { text: '首页', link: '/' },
-      { text: '种族天赋', link: '/Wiki/overview' },
-      { text: '气武器', link: '/Wiki/KiWeapons/气武器' },
+      { text: '🏠 首页', link: '/' },
+      { text: '🧬 种族天赋', link: '/Wiki/overview' },
+      { text: '⚔️ 气武器', link: '/Wiki/KiWeapons/气武器' },
       {
-        text: '装备',
+        text: '🛡️ 装备',
         items: [
           { text: '套装效果', link: '/Wiki/装备/套装效果' },
           { text: '装备强化', link: '/Wiki/装备/装备强化' },
           { text: '称号分类', link: '/Wiki/装备/称号分类' },
           { text: 'VIP礼包', link: '/Wiki/装备/VIP礼包' },
-          { text: '通行证系统', link: '/Wiki/装备/通行证系统' },
         ],
       },
-      { text: '新手教程', link: '/Wiki/新手教程' },
+      { text: '📱 手机版问题解答', link: '/Wiki/手机版问题解答' },
+      { text: '⚡ 自定义技能', link: '/Wiki/自定义技能' },
     ],
 
     sidebar: {
@@ -108,8 +107,11 @@ export default defineConfig({
       '/Wiki/KiWeapons/': [
         { text: '气武器表', link: '/Wiki/KiWeapons/气武器' },
       ],
-      '/Wiki/新手教程': [
-        { text: '新手教程', link: '/Wiki/新手教程' },
+      '/Wiki/手机版问题解答/': [
+        { text: '手机版问题解答', link: '/Wiki/手机版问题解答' },
+      ],
+      '/Wiki/自定义技能/': [
+        { text: '自定义技能', link: '/Wiki/自定义技能' },
       ],
     },
 
