@@ -1,61 +1,96 @@
 /* ==========================================================================
-   奇沌龙珠 Wiki — Apple 风格首页
-   Clean, minimalist hero and feature cards.
-   No energy auras, no particle effects, no glow animations.
+   奇沌龙珠 Wiki — 首页
+   带氛围动画的版本
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   Hero Section — Minimal, Apple-style
+   Keyframes — 氛围动画
+   -------------------------------------------------------------------------- */
+
+@keyframes breathe-glow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+@keyframes float-circle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes float-circle2 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.15); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 0.5; }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fade-slide-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --------------------------------------------------------------------------
+   Hero Section
    -------------------------------------------------------------------------- */
 
 .VPHero {
   position: relative;
   overflow: hidden;
+  padding: 56px 0 40px;
 }
 
-/* Subtle background atmosphere — mesh gradient */
+/* Background mesh — 缓慢呼吸 */
 .VPHero::before {
   content: '';
   position: absolute;
-  top: -30%;
-  left: -10%;
-  width: 120%;
-  height: 160%;
+  inset: 0;
   background:
-    radial-gradient(ellipse 600px 400px at 20% 30%, rgba(232, 85, 0, 0.06) 0%, transparent 60%),
-    radial-gradient(ellipse 500px 500px at 80% 20%, rgba(232, 85, 0, 0.04) 0%, transparent 50%),
-    radial-gradient(ellipse 400px 300px at 50% 80%, rgba(232, 85, 0, 0.03) 0%, transparent 50%);
+    radial-gradient(ellipse 700px 500px at 30% 20%, rgba(232, 85, 0, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 500px 500px at 70% 80%, rgba(232, 85, 0, 0.04) 0%, transparent 50%);
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease-in-out infinite;
   pointer-events: none;
-  z-index: 0;
 }
 
 .dark .VPHero::before {
   background:
-    radial-gradient(ellipse 600px 400px at 20% 30%, rgba(255, 107, 43, 0.08) 0%, transparent 60%),
-    radial-gradient(ellipse 500px 500px at 80% 20%, rgba(255, 107, 43, 0.06) 0%, transparent 50%),
-    radial-gradient(ellipse 400px 300px at 50% 80%, rgba(255, 107, 43, 0.04) 0%, transparent 50%);
+    radial-gradient(ellipse 700px 500px at 30% 20%, rgba(255, 107, 43, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 500px 500px at 70% 80%, rgba(255, 107, 43, 0.05) 0%, transparent 50%);
+  background-size: 200% 200%;
 }
 
-/* Decorative floating circles — static, very subtle */
+/* Decorative circles — 浮动 + 呼吸发光 */
 .VPHero::after {
   content: '';
   position: absolute;
-  top: 10%;
-  right: 8%;
-  width: 180px;
-  height: 180px;
+  top: 8%;
+  right: 10%;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
-  border: 1px solid rgba(232, 85, 0, 0.08);
+  border: 1px solid rgba(232, 85, 0, 0.1);
+  box-shadow: 0 0 30px rgba(232, 85, 0, 0.04);
+  animation: float-circle 6s ease-in-out infinite, pulse-ring 4s ease-in-out infinite;
   pointer-events: none;
   z-index: 0;
 }
 
-.VPHero .container {
-  position: relative;
-  z-index: 1;
+.dark .VPHero::after {
+  border-color: rgba(255, 107, 43, 0.12);
+  box-shadow: 0 0 40px rgba(255, 107, 43, 0.06);
 }
 
-/* Second decorative circle */
+/* Inner circle glow */
 .VPHero .main {
   position: relative;
 }
@@ -63,56 +98,62 @@
 .VPHero .main::before {
   content: '';
   position: absolute;
-  bottom: -20%;
-  left: -5%;
-  width: 120px;
-  height: 120px;
+  bottom: -15%;
+  left: -3%;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
-  border: 1px solid rgba(232, 85, 0, 0.06);
+  border: 1px solid rgba(232, 85, 0, 0.07);
+  box-shadow: 0 0 20px rgba(232, 85, 0, 0.03);
+  animation: float-circle2 7s ease-in-out infinite;
   pointer-events: none;
   z-index: 0;
 }
 
-.dark .VPHero::after {
-  border-color: rgba(255, 107, 43, 0.1);
-}
-
 .dark .VPHero .main::before {
-  border-color: rgba(255, 107, 43, 0.08);
+  border-color: rgba(255, 107, 43, 0.09);
+  box-shadow: 0 0 25px rgba(255, 107, 43, 0.04);
 }
 
-/* Title — clean, bold, no gradient, no glow */
+.VPHero .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero content — 渐入 */
+.VPHero .container > .main > .name,
+.VPHero .container > .main > .text,
+.VPHero .container > .main > .tagline {
+  animation: fade-slide-up 0.6s ease-out both;
+}
+.VPHero .container > .main > .text { animation-delay: 0.1s; }
+.VPHero .container > .main > .tagline { animation-delay: 0.2s; }
+.VPHero .container > .main > .actions { animation: fade-slide-up 0.6s ease-out 0.3s both; }
+
+/* Title */
 .VPHero .name {
-  font-size: 3rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
+  font-size: 3.2rem;
+  font-weight: 750;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
   color: var(--vp-c-text-1);
 }
 
-.dark .VPHero .name {
-  color: var(--vp-c-text-1);
-}
-
-/* Subtitle */
 .VPHero .text {
   font-weight: 500;
-  letter-spacing: 0;
-  color: var(--vp-c-text-2);
-  font-size: 1.2rem;
-  margin-top: 8px;
+  color: var(--vp-c-brand-1);
+  font-size: 1.15rem;
+  margin-top: 6px;
 }
 
-/* Tagline */
 .VPHero .tagline {
-  max-width: 520px;
-  margin: 12px auto 0;
-  color: var(--vp-c-text-3);
+  max-width: 540px;
+  margin: 14px auto 0;
+  color: var(--vp-c-text-2);
   font-size: 1rem;
   line-height: 1.6;
 }
 
-/* Remove all hero custom properties — no gradient backgrounds */
 :root {
   --vp-home-hero-name-color: var(--vp-c-text-1);
   --vp-home-hero-image-background-image: none;
@@ -120,110 +161,124 @@
 }
 
 /* --------------------------------------------------------------------------
-   Feature Cards — Minimal, shadow-based depth
+   Buttons — 带发光悬停
    -------------------------------------------------------------------------- */
 
-.VPFeature {
+.VPHero .VPButton.brand {
+  background: var(--vp-c-brand-1);
   border: none;
-  border-radius: 12px;
-  padding: 24px 20px;
+  border-radius: 980px;
+  padding: 9px 26px;
+  font-size: 0.92rem;
+  font-weight: 550;
+  transition: background 150ms ease, transform 100ms ease, box-shadow 200ms ease;
+}
+
+.VPHero .VPButton.brand:hover {
+  background: var(--vp-c-brand-2);
+  transform: scale(1.03) translateY(-1px);
+  box-shadow: 0 6px 20px rgba(232, 85, 0, 0.2);
+}
+
+.VPHero .VPButton.alt {
+  border: 1.5px solid var(--vp-c-divider);
+  border-radius: 980px;
+  padding: 9px 26px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  transition: border-color 150ms ease, transform 100ms ease, box-shadow 200ms ease;
+}
+
+.VPHero .VPButton.alt:hover {
+  border-color: var(--vp-c-brand-1);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(232, 85, 0, 0.08);
+}
+
+/* --------------------------------------------------------------------------
+   Feature Cards
+   -------------------------------------------------------------------------- */
+
+.VPFeatures .container { max-width: 1152px !important; }
+
+.VPFeatures .items {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+/* 卡片渐入 — 依次出现 */
+.VPFeatures .items > .VPFeature {
+  animation: fade-slide-up 0.5s ease-out both;
+}
+.VPFeatures .items > .VPFeature:nth-child(1) { animation-delay: 0.1s; }
+.VPFeatures .items > .VPFeature:nth-child(2) { animation-delay: 0.2s; }
+.VPFeatures .items > .VPFeature:nth-child(3) { animation-delay: 0.3s; }
+.VPFeatures .items > .VPFeature:nth-child(4) { animation-delay: 0.4s; }
+.VPFeatures .items > .VPFeature:nth-child(5) { animation-delay: 0.5s; }
+.VPFeatures .items > .VPFeature:nth-child(6) { animation-delay: 0.6s; }
+
+.VPFeature {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 14px;
+  padding: 28px 24px;
   background: var(--vp-c-bg-soft);
-  box-shadow: var(--vp-shadow-sm);
-  transition: box-shadow 200ms ease, transform 200ms ease;
+  transition: border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
 }
 
 .VPFeature:hover {
-  box-shadow: var(--vp-shadow-md);
-  transform: translateY(-2px);
+  border-color: rgba(232, 85, 0, 0.25);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(232, 85, 0, 0.06);
 }
 
-/* No top gradient bar */
-.VPFeature::before {
-  display: none;
+.dark .VPFeature:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-/* Icon container — subtle */
+/* Icon — 圆形呼吸光晕 */
 .VPFeature .icon {
   width: 44px;
   height: 44px;
-  border-radius: 10px;
+  border-radius: 50%;
   background: var(--vp-c-brand-soft);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   margin-bottom: 14px;
-  transition: transform 200ms ease;
+  transition: transform 200ms ease, box-shadow 200ms ease;
 }
 
 .VPFeature:hover .icon {
-  transform: scale(1.05);
-  background: var(--vp-c-brand-soft);
-  box-shadow: none;
-  animation: none;
+  transform: scale(1.1);
+  box-shadow: 0 0 16px rgba(232, 85, 0, 0.15);
 }
 
-/* Title */
 .VPFeature .title {
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   margin-bottom: 6px;
   color: var(--vp-c-text-1);
 }
 
-/* Description */
 .VPFeature .details {
   font-size: 0.9rem;
   line-height: 1.6;
   color: var(--vp-c-text-2);
 }
 
-/* No stagger animation */
-.VPFeature {
-  animation: none;
-}
-
-/* --------------------------------------------------------------------------
-   Hero actions (buttons)
-   -------------------------------------------------------------------------- */
-
-.VPHero .VPButton.brand {
-  background: var(--vp-c-brand-1);
-  box-shadow: none;
-  border-radius: 980px; /* Apple pill shape */
-  padding: 8px 24px;
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-.VPHero .VPButton.brand:hover {
-  background: var(--vp-c-brand-2);
-  transform: none;
-  box-shadow: none;
-}
-
-.VPHero .VPButton.alt {
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 980px;
-  padding: 8px 24px;
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-.VPHero .VPButton.alt:hover {
-  border-color: var(--vp-c-text-3);
-  background: transparent;
-}
-
 /* --------------------------------------------------------------------------
    Reduced motion
    -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
-  .VPFeature,
-  .VPFeature .icon,
-  .VPFeature:hover,
-  .VPFeature:hover .icon {
-    transition: none;
-    transform: none;
-  }
+  *, *::before, *::after { animation-duration: 0.01ms !important; }
+}
+
+@media (max-width: 960px) {
+  .VPFeatures .items { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .VPFeatures .items { grid-template-columns: 1fr; }
+  .VPHero .name { font-size: 2.2rem; }
 }
