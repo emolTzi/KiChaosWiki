@@ -196,6 +196,68 @@
 }
 
 /* --------------------------------------------------------------------------
+   背景氛围点缀 — 延伸至内容区域
+   -------------------------------------------------------------------------- */
+
+/* 从 Hero 延续到 Features 的背景柔光 */
+.VPHero .container::after {
+  content: '';
+  position: absolute;
+  bottom: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 400px;
+  background: radial-gradient(ellipse 50% 50% at center, rgba(232, 85, 0, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.dark .VPHero .container::after {
+  background: radial-gradient(ellipse 50% 50% at center, rgba(255, 107, 43, 0.04) 0%, transparent 70%);
+}
+
+/* Features 区域点缀圆环 */
+.custom-features {
+  position: relative;
+}
+
+.custom-features::before {
+  content: '';
+  position: absolute;
+  bottom: 10%;
+  right: -5%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 1px solid rgba(232, 85, 0, 0.05);
+  pointer-events: none;
+  z-index: 0;
+  animation: float-circle 8s ease-in-out infinite;
+}
+
+.custom-features::after {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: -8%;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 1px solid rgba(232, 85, 0, 0.04);
+  pointer-events: none;
+  z-index: 0;
+  animation: float-circle2 9s ease-in-out infinite;
+}
+
+.dark .custom-features::before {
+  border-color: rgba(255, 107, 43, 0.07);
+}
+.dark .custom-features::after {
+  border-color: rgba(255, 107, 43, 0.06);
+}
+
+/* --------------------------------------------------------------------------
    Custom Features — 错落布局 (全宽 + 两列交替)
    -------------------------------------------------------------------------- */
 
