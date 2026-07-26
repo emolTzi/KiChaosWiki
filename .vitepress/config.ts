@@ -98,6 +98,7 @@ export default defineConfig({
       },
       { text: '📱 手机版问题解答', link: '/Wiki/手机版问题解答' },
       { text: '⚡ 自定义技能', link: '/Wiki/自定义技能' },
+      { text: '新手教程', link: '/Wiki/新手教程' },
     ],
 
     sidebar: {
@@ -112,6 +113,9 @@ export default defineConfig({
       ],
       '/Wiki/自定义技能/': [
         { text: '自定义技能', link: '/Wiki/自定义技能' },
+      ],
+      '/Wiki/新手教程': [
+        { text: '新手教程', link: '/Wiki/新手教程' },
       ],
     },
 
