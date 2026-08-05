@@ -1,6 +1,6 @@
 /* ==========================================================================
    奇沌龙珠 Wiki — 现代化排版
-   Chinese-first font stack, refined hierarchy, generous line-height.
+   中文优先字体栈，清晰的标题层级（字距/字重梯度），舒适的正文节奏。
    ========================================================================== */
 
 :root {
@@ -14,7 +14,7 @@
     'Consolas', 'Liberation Mono', 'Courier New', monospace;
 }
 
-/* Base body text */
+/* Base body text — 15.5px / 1.75 中文最佳阅读节奏 */
 .vp-doc {
   font-size: 15.5px;
   line-height: 1.75;
@@ -29,20 +29,20 @@
   margin: 16px 0;
 }
 
-/* Headings — clean hierarchy */
+/* Headings — 字重与字距逐级递减，层级分明 */
 .vp-doc h1 {
   font-size: 2.05rem;
-  font-weight: 750;
-  letter-spacing: -0.028em;
+  font-weight: 760;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
   color: var(--vp-c-text-1);
   margin-bottom: 10px;
-  line-height: 1.25;
 }
 
 .vp-doc h2 {
   font-size: 1.38rem;
-  font-weight: 680;
-  letter-spacing: -0.018em;
+  font-weight: 690;
+  letter-spacing: -0.02em;
   margin-top: 52px;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--vp-c-divider);
@@ -55,14 +55,16 @@
 
 .vp-doc h3 {
   font-size: 1.14rem;
-  font-weight: 640;
+  font-weight: 650;
+  letter-spacing: -0.012em;
   margin-top: 36px;
   color: var(--vp-c-text-1);
 }
 
 .vp-doc h4 {
   font-size: 1rem;
-  font-weight: 620;
+  font-weight: 630;
+  letter-spacing: -0.006em;
   margin-top: 26px;
   color: var(--vp-c-text-2);
 }
@@ -80,25 +82,31 @@
   );
 }
 
-/* Links — brand accent, underline on hover */
-.vp-doc a {
+/* Links — 品牌色 + hover 下划线从左滑入（纯 CSS，不干扰布局） */
+.vp-doc a:not(.header-anchor) {
+  position: relative;
   font-weight: 500;
   color: var(--vp-c-brand-1);
   text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color 150ms ease, color 150ms ease;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1.5px;
+  transition:
+    color var(--vp-motion-fast) var(--vp-ease-out),
+    background-size var(--vp-motion-base) var(--vp-ease-out);
 }
 
-.vp-doc a:hover {
-  border-bottom-color: currentColor;
-  opacity: 0.92;
+.vp-doc a:not(.header-anchor):hover {
+  color: var(--vp-c-brand-2);
+  background-size: 100% 1.5px;
 }
 
-/* Blockquote — minimal, left-accented */
+/* Blockquote — 品牌色左条 + 柔和底色 */
 .vp-doc blockquote {
   border-left: 3px solid var(--vp-c-brand-1);
   background: var(--vp-c-brand-bg);
-  border-radius: 0 var(--vp-radius-md) var(--vp-radius-md) 0;
+  border-radius: 0 var(--vp-radius-lg) var(--vp-radius-lg) 0;
   padding: 12px 20px;
   margin: 16px 0;
   color: var(--vp-c-text-2);
@@ -130,6 +138,7 @@
 /* Selection */
 ::selection {
   background: var(--vp-c-brand-soft);
+  color: var(--vp-c-text-1);
 }
 
 /* Responsive */

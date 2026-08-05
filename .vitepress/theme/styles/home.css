@@ -1,21 +1,7 @@
 /* ==========================================================================
    奇沌龙珠 Wiki — 现代化首页
-   Minimal ambient decoration, gradient hero title, refined cards.
+   呼吸光晕氛围、错落入场动画、玻璃拟态 feature 卡片。
    ========================================================================== */
-
-/* --------------------------------------------------------------------------
-   Keyframes — 克制的氛围动画
-   -------------------------------------------------------------------------- */
-
-@keyframes fade-slide-up {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes hero-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
 
 /* --------------------------------------------------------------------------
    Hero Section
@@ -24,17 +10,20 @@
 .VPHero {
   position: relative;
   overflow: hidden;
-  padding: 64px 0 48px;
+  padding: 72px 0 48px;
 }
 
-/* 背景柔光 — 静态克制 */
+/* 背景柔光 — 缓慢呼吸（aura-breathe 定义于 motion.css） */
 .VPHero::before {
   content: '';
   position: absolute;
-  inset: 0;
+  inset: -5%;
   background:
-    radial-gradient(ellipse 720px 520px at 50% 0%, var(--vp-c-brand-soft) 0%, transparent 65%);
+    radial-gradient(ellipse 720px 520px at 50% 0%, var(--vp-c-brand-aura) 0%, transparent 65%),
+    radial-gradient(ellipse 420px 360px at 78% 38%, var(--vp-c-brand-bg) 0%, transparent 60%);
   pointer-events: none;
+  transform-origin: 50% 0;
+  animation: aura-breathe 9s var(--vp-ease-out) infinite;
 }
 
 /* 装饰光环 — 单个浮动圆环 */
@@ -48,7 +37,7 @@
   border-radius: 50%;
   border: 1px solid var(--vp-c-brand-soft);
   box-shadow: 0 0 40px var(--vp-c-brand-bg);
-  animation: hero-float 7s ease-in-out infinite;
+  animation: hero-float 8s ease-in-out infinite;
   pointer-events: none;
   z-index: 0;
 }
@@ -58,17 +47,17 @@
   z-index: 1;
 }
 
-/* Hero content — 渐入 */
-.VPHero .container > .main > .name,
-.VPHero .container > .main > .text,
-.VPHero .container > .main > .tagline,
-.VPHero .container > .main > .actions {
-  animation: fade-slide-up 0.55s ease-out both;
+/* Hero 入场 — 依次错落：name → text → tagline → actions */
+.VPHero .main .name,
+.VPHero .main .text,
+.VPHero .main .tagline,
+.VPHero .main .actions {
+  animation: fade-slide-up var(--vp-motion-slow) var(--vp-ease-out) both;
 }
 
-.VPHero .container > .main > .text { animation-delay: 0.08s; }
-.VPHero .container > .main > .tagline { animation-delay: 0.16s; }
-.VPHero .container > .main > .actions { animation-delay: 0.24s; }
+.VPHero .main .text { animation-delay: 80ms; }
+.VPHero .main .tagline { animation-delay: 160ms; }
+.VPHero .main .actions { animation-delay: 240ms; }
 
 /* Title — 渐变品牌色 */
 .VPHero .name {
@@ -107,43 +96,16 @@
 }
 
 /* --------------------------------------------------------------------------
-   Buttons — 精致 pill
+   Hero Buttons — 尺寸由 components.css 统一交互，这里只留间距
    -------------------------------------------------------------------------- */
 
-.VPHero .VPButton.brand {
-  background: var(--vp-c-brand-gradient);
-  border: none;
-  border-radius: var(--vp-radius-pill);
-  padding: 10px 28px;
-  font-size: 0.92rem;
-  font-weight: 600;
-  box-shadow: var(--vp-shadow-brand);
-  transition: transform 120ms ease, box-shadow 180ms ease, opacity 180ms ease;
-}
-
-.VPHero .VPButton.brand:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 22px rgba(232, 85, 0, 0.28);
-  opacity: 0.96;
-}
-
-.VPHero .VPButton.alt {
-  border: 1.5px solid var(--vp-c-divider);
-  border-radius: var(--vp-radius-pill);
-  padding: 10px 28px;
-  font-size: 0.92rem;
-  font-weight: 500;
-  transition: border-color 160ms ease, transform 120ms ease, background 160ms ease;
-}
-
-.VPHero .VPButton.alt:hover {
-  border-color: var(--vp-c-brand-1);
-  background: var(--vp-c-brand-bg);
-  transform: translateY(-1px);
+.VPHero .VPButton {
+  padding: 11px 28px !important;
+  font-size: 0.92rem !important;
 }
 
 /* --------------------------------------------------------------------------
-   Custom Features — 现代卡片
+   Custom Features — 玻璃拟态卡片
    -------------------------------------------------------------------------- */
 
 .custom-features {
@@ -161,30 +123,53 @@
   gap: 20px;
 }
 
-/* 卡片基础 */
+/* 卡片基础 — 半透明玻璃 + 品牌色渐变边框（hover 淡入） */
 .feature-card {
+  position: relative;
   display: flex;
   align-items: flex-start;
   gap: 20px;
   padding: 30px 28px;
-  border: 1px solid var(--vp-c-divider);
+  border: 1px solid var(--vp-c-card-border);
   border-radius: var(--vp-radius-lg);
-  background: var(--vp-c-bg);
+  background: var(--vp-c-card-bg);
+  -webkit-backdrop-filter: blur(var(--vp-c-glass-blur)) saturate(140%);
+  backdrop-filter: blur(var(--vp-c-glass-blur)) saturate(140%);
   box-shadow: var(--vp-shadow-sm);
   text-decoration: none;
   color: inherit;
-  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
-  animation: fade-slide-up 0.5s ease-out both;
+  overflow: hidden;
+  transition:
+    transform var(--vp-motion-base) var(--vp-ease-out),
+    box-shadow var(--vp-motion-slow) var(--vp-ease-out),
+    background-color var(--vp-motion-slow) var(--vp-ease-out);
+  animation: fade-slide-up var(--vp-motion-slow) var(--vp-ease-out) both;
+}
+
+/* 品牌色渐变边框层 — hover 时淡入，实现“边框渐变过渡” */
+.feature-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--vp-c-card-border-gradient);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity var(--vp-motion-slow) var(--vp-ease-out);
+  pointer-events: none;
+}
+
+.feature-card:hover::before {
+  opacity: 1;
 }
 
 .feature-card:hover {
-  border-color: rgba(232, 85, 0, 0.28);
-  transform: translateY(-3px);
-  box-shadow: var(--vp-shadow-md);
-}
-
-.dark .feature-card:hover {
-  border-color: rgba(255, 122, 61, 0.32);
+  transform: translateY(-4px);
+  box-shadow: var(--vp-shadow-lg), var(--vp-shadow-brand-hover);
 }
 
 /* 全宽卡片 */
@@ -200,24 +185,26 @@
 .feature-block:nth-child(4) .feature-card { animation-delay: 0.3s; }
 .feature-block:nth-child(4) .feature-card:nth-child(2) { animation-delay: 0.36s; }
 
-/* 图标 */
+/* 图标 — 品牌渐变底 + hover 放大 */
 .feature-card__icon {
   width: 52px;
   height: 52px;
   flex-shrink: 0;
   border-radius: var(--vp-radius-md);
-  background: var(--vp-c-brand-gradient-soft);
-  border: 1px solid var(--vp-c-brand-soft);
+  background: var(--vp-c-brand-gradient-icon);
+  border: 1px solid var(--vp-c-glass-border);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.4rem;
-  transition: transform 200ms ease, box-shadow 200ms ease;
+  transition:
+    transform var(--vp-motion-base) var(--vp-ease-spring),
+    box-shadow var(--vp-motion-slow) var(--vp-ease-out);
 }
 
 .feature-card:hover .feature-card__icon {
-  transform: scale(1.08);
-  box-shadow: 0 0 0 4px var(--vp-c-brand-bg);
+  transform: scale(1.12) translateY(-1px);
+  box-shadow: var(--vp-shadow-brand);
 }
 
 .feature-block--full .feature-card__icon {
@@ -234,6 +221,11 @@
   color: var(--vp-c-text-1);
   line-height: 1.35;
   letter-spacing: -0.01em;
+  transition: color var(--vp-motion-fast) var(--vp-ease-out);
+}
+
+.feature-card:hover .feature-card__title {
+  color: var(--vp-c-brand-1);
 }
 
 .feature-block--full .feature-card__title {
@@ -253,10 +245,22 @@
 }
 
 /* --------------------------------------------------------------------------
-   Reduced motion
+   Reduced motion — 首页专属兜底（全局兜底见 motion.css）
    -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; }
+  .VPHero::before,
+  .VPHero::after {
+    animation: none;
+  }
+  .feature-card,
+  .feature-card__icon,
+  .VPHero .main .name,
+  .VPHero .main .text,
+  .VPHero .main .tagline,
+  .VPHero .main .actions {
+    animation: none;
+    transition: none !important;
+  }
 }
 
 @media (max-width: 960px) {
