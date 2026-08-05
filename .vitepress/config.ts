@@ -84,11 +84,11 @@ export default defineConfig({
     siteTitle: '奇沌龙珠 Wiki',
 
     nav: [
-      { text: '🏠 首页', link: '/' },
-      { text: '🧬 种族天赋', link: '/Wiki/overview' },
-      { text: '⚔️ 气武器', link: '/Wiki/KiWeapons/气武器' },
+      { text: '首页', link: '/' },
+      { text: '种族天赋', link: '/Wiki/overview' },
+      { text: '气武器', link: '/Wiki/KiWeapons/气武器' },
       {
-        text: '🛡️ 装备',
+        text: '装备',
         items: [
           { text: '套装效果', link: '/Wiki/装备/套装效果' },
           { text: '装备强化', link: '/Wiki/装备/装备强化' },
@@ -96,8 +96,8 @@ export default defineConfig({
           { text: 'VIP礼包', link: '/Wiki/装备/VIP礼包' },
         ],
       },
-      { text: '📱 手机版问题解答', link: '/Wiki/手机版问题解答' },
-      { text: '⚡ 自定义技能', link: '/Wiki/自定义技能' },
+      { text: '手机版问题解答', link: '/Wiki/手机版问题解答' },
+      { text: '自定义技能', link: '/Wiki/自定义技能' },
       { text: '新手教程', link: '/Wiki/新手教程' },
     ],
 

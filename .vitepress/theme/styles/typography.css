@@ -1,47 +1,49 @@
 /* ==========================================================================
-   奇沌龙珠 Wiki — Apple 风格排版
-   Clean typography using system fonts, subtle hierarchy.
+   奇沌龙珠 Wiki — 现代化排版
+   Chinese-first font stack, refined hierarchy, generous line-height.
    ========================================================================== */
 
 :root {
   --vp-font-family-base:
     -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text',
-    'Inter', 'Helvetica Neue', system-ui, sans-serif,
+    'Inter', 'HarmonyOS Sans SC', 'MiSans', 'PingFang SC',
+    'Microsoft YaHei', 'Helvetica Neue', system-ui, sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji';
   --vp-font-family-mono:
     ui-monospace, 'SF Mono', 'JetBrains Mono', 'Menlo', 'Monaco',
     'Consolas', 'Liberation Mono', 'Courier New', monospace;
 }
 
-/* Base body text — comfortable reading */
+/* Base body text */
 .vp-doc {
-  font-size: 16px;
-  line-height: 1.7;
+  font-size: 15.5px;
+  line-height: 1.75;
   color: var(--vp-c-text-1);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 .vp-doc p {
-  line-height: 1.7;
+  line-height: 1.75;
   margin: 16px 0;
 }
 
-/* Headings — clean, weight-driven hierarchy */
+/* Headings — clean hierarchy */
 .vp-doc h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: -0.025em;
+  font-size: 2.05rem;
+  font-weight: 750;
+  letter-spacing: -0.028em;
   color: var(--vp-c-text-1);
-  margin-bottom: 8px;
-  line-height: 1.2;
+  margin-bottom: 10px;
+  line-height: 1.25;
 }
 
 .vp-doc h2 {
-  font-size: 1.4rem;
-  font-weight: 650;
-  letter-spacing: -0.015em;
-  margin-top: 48px;
+  font-size: 1.38rem;
+  font-weight: 680;
+  letter-spacing: -0.018em;
+  margin-top: 52px;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--vp-c-divider);
   color: var(--vp-c-text-1);
@@ -52,22 +54,22 @@
 }
 
 .vp-doc h3 {
-  font-size: 1.15rem;
-  font-weight: 600;
-  margin-top: 32px;
+  font-size: 1.14rem;
+  font-weight: 640;
+  margin-top: 36px;
   color: var(--vp-c-text-1);
 }
 
 .vp-doc h4 {
-  font-size: 1.02rem;
-  font-weight: 600;
-  margin-top: 24px;
+  font-size: 1rem;
+  font-weight: 620;
+  margin-top: 26px;
   color: var(--vp-c-text-2);
 }
 
 /* Horizontal rule — subtle fade */
 .vp-doc hr {
-  margin: 40px 0;
+  margin: 44px 0;
   border: none;
   height: 1px;
   background: linear-gradient(
@@ -78,24 +80,25 @@
   );
 }
 
-/* Links — underline on hover, brand accent */
+/* Links — brand accent, underline on hover */
 .vp-doc a {
   font-weight: 500;
   color: var(--vp-c-brand-1);
   text-decoration: none;
   border-bottom: 1px solid transparent;
-  transition: border-color 150ms ease;
+  transition: border-color 150ms ease, color 150ms ease;
 }
 
 .vp-doc a:hover {
-  border-bottom-color: var(--vp-c-brand-soft);
+  border-bottom-color: currentColor;
+  opacity: 0.92;
 }
 
 /* Blockquote — minimal, left-accented */
 .vp-doc blockquote {
   border-left: 3px solid var(--vp-c-brand-1);
   background: var(--vp-c-brand-bg);
-  border-radius: 0 8px 8px 0;
+  border-radius: 0 var(--vp-radius-md) var(--vp-radius-md) 0;
   padding: 12px 20px;
   margin: 16px 0;
   color: var(--vp-c-text-2);
@@ -108,18 +111,25 @@
 
 /* Code — inline */
 .vp-doc code {
-  border-radius: 4px;
+  border-radius: var(--vp-radius-sm);
   padding: 2px 6px;
   font-size: 0.88em;
   font-weight: 500;
   background: var(--vp-c-bg-mute);
   color: var(--vp-c-text-1);
+  border: 1px solid var(--vp-c-divider);
 }
 
 .vp-doc pre code {
   font-size: 0.85em;
-  line-height: 1.6;
+  line-height: 1.65;
   background: transparent;
+  border: none;
+}
+
+/* Selection */
+::selection {
+  background: var(--vp-c-brand-soft);
 }
 
 /* Responsive */
@@ -127,6 +137,6 @@
   .vp-doc {
     font-size: 15px;
   }
-  .vp-doc h1 { font-size: 1.6rem; }
-  .vp-doc h2 { font-size: 1.2rem; }
+  .vp-doc h1 { font-size: 1.65rem; }
+  .vp-doc h2 { font-size: 1.22rem; }
 }

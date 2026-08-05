@@ -1,81 +1,115 @@
 /* ==========================================================================
-   奇沌龙珠 Wiki — Apple 风格色彩系统
-   Minimalist color system inspired by Apple design principles.
-   Brand orange is preserved as accent, used sparingly.
+   奇沌龙珠 Wiki — 现代化简约色彩系统
+   Design tokens: warm orange brand with a refined neutral scale.
+   Light / Dark modes with consistent semantics.
    ========================================================================== */
 
 :root {
-  /* 🔶 Brand Orange — single accent point */
-  --vp-c-orange: #e85500;
+  /* 🔶 Brand — 奇沌橙（克制的单一强调色） */
+  --vp-c-orange-50: #fff5ef;
+  --vp-c-orange-100: #ffe6d6;
+  --vp-c-orange-200: #ffc9a8;
+  --vp-c-orange-300: #ffa26b;
+  --vp-c-orange-400: #f97c2e;
+  --vp-c-orange-500: #e85500;   /* primary */
+  --vp-c-orange-600: #d14b00;
+  --vp-c-orange-700: #a83c02;
 
-  /* 🌫️ Neutrals — Apple-style gray scale */
-  --vp-c-gray-50: #f9f9f9;
-  --vp-c-gray-100: #f2f2f3;
-  --vp-c-gray-200: #e5e5e6;
-  --vp-c-gray-300: #d1d1d4;
-  --vp-c-gray-400: #a1a1a6;
-  --vp-c-gray-500: #6e6e73;
-  --vp-c-gray-600: #48484a;
-  --vp-c-gray-700: #363638;
-  --vp-c-gray-800: #222224;
-  --vp-c-gray-900: #111113;
+  /* 🌫️ Neutrals — 暖灰阶 */
+  --vp-c-gray-50: #fafaf9;
+  --vp-c-gray-100: #f4f4f2;
+  --vp-c-gray-200: #e8e8e4;
+  --vp-c-gray-300: #d6d6d1;
+  --vp-c-gray-400: #a8a8a1;
+  --vp-c-gray-500: #73736c;
+  --vp-c-gray-600: #4b4b46;
+  --vp-c-gray-700: #383833;
+  --vp-c-gray-800: #232320;
+  --vp-c-gray-900: #141412;
 
-  /* Brand mapping — Orange as minimal accent */
-  --vp-c-brand-1: var(--vp-c-orange);
-  --vp-c-brand-2: #d94d00;
-  --vp-c-brand-3: var(--vp-c-orange);
+  /* Brand mapping */
+  --vp-c-brand-1: var(--vp-c-orange-500);
+  --vp-c-brand-2: var(--vp-c-orange-600);
+  --vp-c-brand-3: var(--vp-c-orange-400);
   --vp-c-brand-soft: rgba(232, 85, 0, 0.08);
-  --vp-c-brand-bg: rgba(232, 85, 0, 0.04);
+  --vp-c-brand-bg: rgba(232, 85, 0, 0.05);
 
-  /* Surface colors */
+  /* Brand gradient — 现代感渐变 */
+  --vp-c-brand-gradient: linear-gradient(120deg, #f97316 0%, #e85500 45%, #c2410c 100%);
+  --vp-c-brand-gradient-soft: linear-gradient(120deg, rgba(249, 115, 22, 0.12), rgba(232, 85, 0, 0.06));
+
+  /* Semantic */
+  --vp-c-blue: #3b82f6;
+  --vp-c-green: #16a34a;
+  --vp-c-yellow: #ca8a04;
+  --vp-c-red: #dc2626;
+  --vp-c-purple: #a855f7;
+
+  /* Surfaces */
   --vp-c-bg: #ffffff;
-  --vp-c-bg-soft: #fafafa;
-  --vp-c-bg-mute: #f2f2f3;
-  --vp-c-bg-alt: #ffffff;
+  --vp-c-bg-soft: #fafaf9;
+  --vp-c-bg-mute: #f2f2f0;
+  --vp-c-bg-alt: #f7f7f5;
 
   /* Text */
-  --vp-c-text-1: #1d1d1f;
-  --vp-c-text-2: #6e6e73;
-  --vp-c-text-3: #a1a1a6;
+  --vp-c-text-1: #1c1c1a;
+  --vp-c-text-2: #6b6b64;
+  --vp-c-text-3: #a3a39c;
 
   /* Borders */
-  --vp-c-divider: rgba(0, 0, 0, 0.06);
-  --vp-c-gutter: rgba(0, 0, 0, 0.06);
+  --vp-c-divider: rgba(0, 0, 0, 0.07);
+  --vp-c-gutter: rgba(0, 0, 0, 0.07);
 
-  /* Shadows */
-  --vp-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
-  --vp-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
-  --vp-shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.08);
+  /* Shadows — layered, soft */
+  --vp-shadow-sm: 0 1px 2px rgba(20, 20, 18, 0.04), 0 1px 3px rgba(20, 20, 18, 0.03);
+  --vp-shadow-md: 0 2px 8px rgba(20, 20, 18, 0.05), 0 4px 16px rgba(20, 20, 18, 0.04);
+  --vp-shadow-lg: 0 8px 24px rgba(20, 20, 18, 0.07), 0 16px 48px rgba(20, 20, 18, 0.05);
+  --vp-shadow-brand: 0 4px 16px rgba(232, 85, 0, 0.18);
+
+  /* Radii */
+  --vp-radius-sm: 6px;
+  --vp-radius-md: 10px;
+  --vp-radius-lg: 16px;
+  --vp-radius-xl: 20px;
+  --vp-radius-pill: 999px;
 
   /* Layout */
-  --vp-sidebar-width: 280px;
+  --vp-sidebar-width: 272px;
   --vp-nav-height: 56px;
   --vp-layout-max-width: 1440px;
 }
 
 /* ==========================================================================
-   Dark Mode — Apple-style deep dark
+   Dark Mode — 深邃暖黑
    ========================================================================== */
 .dark {
-  --vp-c-bg: #000000;
-  --vp-c-bg-soft: #1c1c1e;
-  --vp-c-bg-mute: #2c2c2e;
-  --vp-c-bg-alt: #111113;
+  --vp-c-orange-500: #ff7a3d;
+  --vp-c-orange-600: #ff8f5c;
+  --vp-c-orange-400: #e85500;
 
-  --vp-c-text-1: #f5f5f7;
-  --vp-c-text-2: #98989f;
-  --vp-c-text-3: #6e6e73;
+  --vp-c-brand-1: var(--vp-c-orange-500);
+  --vp-c-brand-2: var(--vp-c-orange-600);
+  --vp-c-brand-3: var(--vp-c-orange-400);
+  --vp-c-brand-soft: rgba(255, 122, 61, 0.14);
+  --vp-c-brand-bg: rgba(255, 122, 61, 0.07);
 
-  --vp-c-divider: rgba(255, 255, 255, 0.08);
-  --vp-c-gutter: rgba(255, 255, 255, 0.08);
+  --vp-c-brand-gradient: linear-gradient(120deg, #fb923c 0%, #ff7a3d 45%, #f97316 100%);
+  --vp-c-brand-gradient-soft: linear-gradient(120deg, rgba(251, 146, 60, 0.14), rgba(255, 122, 61, 0.06));
 
-  --vp-c-brand-1: #ff6b2b;
-  --vp-c-brand-2: var(--vp-c-orange);
-  --vp-c-brand-3: #ff6b2b;
-  --vp-c-brand-soft: rgba(255, 107, 43, 0.12);
-  --vp-c-brand-bg: rgba(255, 107, 43, 0.06);
+  --vp-c-bg: #101010;
+  --vp-c-bg-soft: #1a1a19;
+  --vp-c-bg-mute: #262624;
+  --vp-c-bg-alt: #171716;
 
-  --vp-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-  --vp-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-  --vp-shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.5);
+  --vp-c-text-1: #f5f5f2;
+  --vp-c-text-2: #9c9c93;
+  --vp-c-text-3: #6e6e66;
+
+  --vp-c-divider: rgba(255, 255, 255, 0.09);
+  --vp-c-gutter: rgba(255, 255, 255, 0.09);
+
+  --vp-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
+  --vp-shadow-md: 0 2px 8px rgba(0, 0, 0, 0.45), 0 4px 16px rgba(0, 0, 0, 0.35);
+  --vp-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5), 0 16px 48px rgba(0, 0, 0, 0.4);
+  --vp-shadow-brand: 0 4px 16px rgba(255, 122, 61, 0.22);
 }

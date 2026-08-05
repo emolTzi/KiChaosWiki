@@ -8,7 +8,7 @@ table {
   border-collapse: separate;
   border-spacing: 0;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: var(--vp-radius-md);
   box-shadow: var(--vp-shadow-sm);
   margin: 20px 0;
 }
@@ -24,7 +24,7 @@ th {
   background: var(--vp-c-bg-mute);
   color: var(--vp-c-text-2);
   font-weight: 600;
-  padding: 12px 14px;
+  padding: 13px 14px;
   font-size: 0.8rem;
   letter-spacing: 0.03em;
   text-align: center;
@@ -33,18 +33,18 @@ th {
 }
 
 th:first-child {
-  border-top-left-radius: 8px;
+  border-top-left-radius: var(--vp-radius-md);
 }
 th:last-child {
-  border-top-right-radius: 8px;
+  border-top-right-radius: var(--vp-radius-md);
 }
 
 td {
-  padding: 11px 14px;
+  padding: 12px 14px;
   border-bottom: 1px solid var(--vp-c-divider);
   text-align: center;
   font-size: 0.9rem;
-  transition: background 100ms ease;
+  transition: background 120ms ease;
   color: var(--vp-c-text-1);
 }
 
@@ -78,7 +78,7 @@ tr:hover {
 
 /* Table wrapper */
 .vp-doc .table-wrap {
-  border-radius: 8px;
+  border-radius: var(--vp-radius-md);
   overflow-x: auto;
 }
 
@@ -316,7 +316,7 @@ td[data-hl="ki"] {
     width: 24px;
     pointer-events: none;
     background: linear-gradient(270deg, var(--vp-c-bg) 0%, transparent 100%);
-    border-radius: 0 8px 8px 0;
+    border-radius: 0 var(--vp-radius-md) var(--vp-radius-md) 0;
   }
 }
 
