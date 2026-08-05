@@ -1,18 +1,26 @@
 /* ==========================================================================
-   奇沌龙珠 Wiki — 实用工具
-   内容入场、滚动条、主题切换过渡、返回顶部。
+   奇沌龙珠 Wiki — Apple 风格实用工具
+   Scrollbar, selection, page transitions, back-to-top.
+   Clean and minimal.
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   页面内容入场 — 轻微的 fade-slide-up（首页 hero 已有专属动画，避免叠加）
+   Page transitions — subtle fade only
    -------------------------------------------------------------------------- */
 
-.VPContent:not(.is-home) .vp-doc {
-  animation: fade-slide-up var(--vp-motion-slow) var(--vp-ease-out);
+.vp-doc {
+  animation: contentFadeIn 200ms ease-out;
 }
 
+@keyframes contentFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Heading fade removed — keep it simple */
+
 /* --------------------------------------------------------------------------
-   Scrollbar — 细腻的系统风格滚动条
+   Scrollbar — minimal, system-like
    -------------------------------------------------------------------------- */
 
 ::-webkit-scrollbar {
@@ -30,7 +38,7 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--vp-c-brand-border);
+  background: var(--vp-c-text-3);
 }
 
 /* --------------------------------------------------------------------------
@@ -49,7 +57,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   Back-to-top — 毛玻璃圆钮，hover 微浮起 + 品牌光晕
+   Back-to-top — minimal circle
    -------------------------------------------------------------------------- */
 
 .VPBackToTop {
@@ -57,26 +65,26 @@
   height: 40px !important;
   border-radius: 50% !important;
   border: 1px solid var(--vp-c-divider) !important;
-  background: var(--vp-c-glass-bg) !important;
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.8) !important;
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   box-shadow: var(--vp-shadow-sm) !important;
   color: var(--vp-c-text-2) !important;
-  transition:
-    opacity var(--vp-motion-base) ease,
-    transform var(--vp-motion-base) var(--vp-ease-out),
-    box-shadow var(--vp-motion-slow) var(--vp-ease-out),
-    border-color var(--vp-motion-slow) var(--vp-ease-out) !important;
+  transition: opacity 200ms ease, transform 200ms ease !important;
+}
+
+.dark .VPBackToTop {
+  background: rgba(28, 28, 30, 0.8) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
 }
 
 .VPBackToTop:hover {
   transform: translateY(-2px) !important;
-  border-color: var(--vp-c-brand-border) !important;
-  box-shadow: var(--vp-shadow-md), var(--vp-shadow-brand) !important;
+  box-shadow: var(--vp-shadow-md) !important;
 }
 
 .VPBackToTop:active {
-  transform: translateY(0) scale(0.94) !important;
+  transform: translateY(0) !important;
 }
 
 .VPBackToTop svg {
@@ -84,11 +92,11 @@
 }
 
 /* --------------------------------------------------------------------------
-   Dark/Light 模式切换过渡 — 只作用于关键元素
+   Dark/Light mode transition — only on key elements
    -------------------------------------------------------------------------- */
 
 html {
-  transition: background-color var(--vp-motion-slow) ease;
+  transition: background-color 300ms ease;
 }
 
 body,
@@ -96,19 +104,19 @@ body,
 .vp-doc,
 .VPFooter {
   transition:
-    background-color var(--vp-motion-slow) ease,
-    color var(--vp-motion-slow) ease;
+    background-color 300ms ease,
+    color 300ms ease;
 }
 
 .VPNavBar,
 .VPSidebar,
 .VPLocalNav {
   transition:
-    background-color var(--vp-motion-slow) ease,
-    border-color var(--vp-motion-slow) ease;
+    background-color 300ms ease,
+    border-color 300ms ease;
 }
 
-/* 首帧加载不加过渡，避免闪烁 */
+/* First load: no transition to avoid flash */
 html:not(.ready) body,
 html:not(.ready) .VPApp,
 html:not(.ready) .vp-doc {
@@ -116,10 +124,10 @@ html:not(.ready) .vp-doc {
 }
 
 /* --------------------------------------------------------------------------
-   Reduced motion — 兜底（全局规则见 motion.css）
+   Reduced motion
    -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
-  .VPContent:not(.is-home) .vp-doc {
+  .vp-doc {
     animation: none;
   }
   html, body, .VPApp, .VPNavBar, .VPSidebar, .VPContent, .VPFooter,

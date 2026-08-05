@@ -1,10 +1,10 @@
 /* ==========================================================================
    奇沌龙珠 Wiki — 现代化布局
-   毛玻璃导航、药丸滑动 hover、干净的侧栏与留白呼吸感。
+   Translucent glass nav with pill hover, clean sidebar, airy content.
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   Page Background — 暖色氛围（极淡，避免喧宾夺主）
+   Page Background — subtle warm atmosphere
    -------------------------------------------------------------------------- */
 
 .VPContent {
@@ -42,7 +42,7 @@
   z-index: 2;
 }
 
-/* Content width — 内容区留白呼吸感 */
+/* Content width */
 @media (min-width: 960px) {
   .content-container {
     max-width: 880px !important;
@@ -50,15 +50,14 @@
 }
 
 /* --------------------------------------------------------------------------
-   Navbar — 毛玻璃 + 细投影
+   Navbar — frosted glass, refined
    -------------------------------------------------------------------------- */
 
 .VPNavBar {
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
   backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   background: rgba(255, 255, 255, 0.68) !important;
   border-bottom: 1px solid var(--vp-c-divider);
-  box-shadow: var(--vp-shadow-sm);
 }
 
 .dark .VPNavBar {
@@ -76,35 +75,26 @@
   border-bottom: none;
 }
 
-/* Nav items — hover 药丸背景从左滑入，激活项品牌色柔和高亮 */
+/* Nav items — pill hover, modern */
 .VPNavBarMenuLink {
-  position: relative;
   font-weight: 500;
   font-size: 0.875rem;
   padding: 5px 14px !important;
   margin: 4px 2px;
   border-radius: var(--vp-radius-pill);
   color: var(--vp-c-text-2);
-  background-image: linear-gradient(var(--vp-c-brand-soft), var(--vp-c-brand-soft));
-  background-repeat: no-repeat;
-  background-position: 0 50%;
-  background-size: 0% 100%;
-  transition:
-    color var(--vp-motion-fast) var(--vp-ease-out),
-    background-size var(--vp-motion-base) var(--vp-ease-out),
-    box-shadow var(--vp-motion-base) var(--vp-ease-out);
+  transition: background 160ms ease, color 160ms ease;
 }
 
 .VPNavBarMenuLink:hover {
-  background-size: 100% 100%;
-  color: var(--vp-c-brand-1);
+  background: var(--vp-c-bg-mute);
+  color: var(--vp-c-text-1) !important;
 }
 
 .VPNavBarMenuLink.active {
-  background-size: 100% 100%;
+  background: var(--vp-c-brand-soft);
   color: var(--vp-c-brand-1) !important;
   font-weight: 600;
-  box-shadow: inset 0 0 0 1px var(--vp-c-brand-ring);
 }
 
 /* Remove underline animation */
@@ -112,7 +102,7 @@
   display: none;
 }
 
-/* Dropdown — 同样的药丸滑动 + 毛玻璃菜单 */
+/* Dropdown — cleaner */
 .VPNavBarMenuGroup .button {
   border-radius: var(--vp-radius-pill);
   padding: 5px 12px !important;
@@ -120,18 +110,12 @@
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--vp-c-text-2);
-  background-image: linear-gradient(var(--vp-c-brand-soft), var(--vp-c-brand-soft));
-  background-repeat: no-repeat;
-  background-position: 0 50%;
-  background-size: 0% 100%;
-  transition:
-    color var(--vp-motion-fast) var(--vp-ease-out),
-    background-size var(--vp-motion-base) var(--vp-ease-out);
+  transition: background 160ms ease, color 160ms ease;
 }
 
 .VPNavBarMenuGroup .button:hover {
-  background-size: 100% 100%;
-  color: var(--vp-c-brand-1);
+  background: var(--vp-c-bg-mute);
+  color: var(--vp-c-text-1);
 }
 
 .VPNavBarMenuGroup .VPFlyout .menu {
@@ -140,26 +124,20 @@
   border: 1px solid var(--vp-c-divider);
   padding: 8px;
   overflow: hidden;
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
-  backdrop-filter: blur(20px) saturate(160%);
-  background: var(--vp-c-glass-strong);
 }
 
 .VPNavBarMenuGroup .VPFlyout .menu .link {
   border-radius: var(--vp-radius-md);
   padding: 8px 12px;
-  transition:
-    background-color var(--vp-motion-fast) var(--vp-ease-out),
-    color var(--vp-motion-fast) var(--vp-ease-out);
+  transition: background 140ms ease;
 }
 
 .VPNavBarMenuGroup .VPFlyout .menu .link:hover {
-  background: var(--vp-c-brand-bg);
-  color: var(--vp-c-brand-1);
+  background: var(--vp-c-bg-mute);
 }
 
 /* --------------------------------------------------------------------------
-   Sidebar — 干净、留白充足
+   Sidebar — clean, minimal
    -------------------------------------------------------------------------- */
 
 .VPSidebar {
@@ -192,29 +170,21 @@
   font-size: 0.875rem;
 }
 
-/* Link — hover 背景滑入 + 激活品牌色高亮 */
+/* Link styling — rounded with active indicator */
 .VPSidebarItem .item .link {
   border-radius: var(--vp-radius-md);
+  transition: background 150ms ease;
   padding: 7px 12px !important;
   margin: 1px 8px;
   position: relative;
-  background-image: linear-gradient(var(--vp-c-brand-bg), var(--vp-c-brand-bg));
-  background-repeat: no-repeat;
-  background-position: 0 50%;
-  background-size: 0% 100%;
-  transition:
-    color var(--vp-motion-fast) var(--vp-ease-out),
-    background-size var(--vp-motion-base) var(--vp-ease-out);
 }
 
 .VPSidebarItem .item .link:hover {
-  background-size: 100% 100%;
-  color: var(--vp-c-text-1);
+  background: var(--vp-c-bg-mute);
 }
 
 .VPSidebarItem.is-active > .item .link {
-  background-size: 100% 100%;
-  background-image: linear-gradient(var(--vp-c-brand-soft), var(--vp-c-brand-soft));
+  background: var(--vp-c-brand-soft);
   font-weight: 600;
 }
 
@@ -250,7 +220,7 @@
 }
 
 .VPSidebarItem .caret {
-  transition: transform var(--vp-motion-base) var(--vp-ease-out);
+  transition: transform 200ms ease;
 }
 
 /* --------------------------------------------------------------------------
@@ -260,16 +230,14 @@
 .VPDocAsideOutline .outline-link {
   border-radius: var(--vp-radius-sm);
   padding: 3px 10px;
-  transition:
-    background-color var(--vp-motion-fast) var(--vp-ease-out),
-    color var(--vp-motion-fast) var(--vp-ease-out);
+  transition: background 150ms ease;
   font-size: 0.85em;
   color: var(--vp-c-text-2);
 }
 
 .VPDocAsideOutline .outline-link:hover {
-  background: var(--vp-c-brand-bg);
-  color: var(--vp-c-brand-1);
+  background: var(--vp-c-bg-mute);
+  color: var(--vp-c-text-1);
 }
 
 .VPDocAsideOutline .outline-link.active {
@@ -293,11 +261,10 @@
 }
 
 /* --------------------------------------------------------------------------
-   Local nav (mobile) — 毛玻璃
+   Local nav (mobile)
    -------------------------------------------------------------------------- */
 
 .VPLocalNav {
-  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   background: rgba(255, 255, 255, 0.8);
   border-bottom: 1px solid var(--vp-c-divider);
@@ -308,20 +275,16 @@
 }
 
 /* --------------------------------------------------------------------------
-   Pager (上一页/下一页) — 微浮起卡片
+   Pager (上一页/下一页)
    -------------------------------------------------------------------------- */
 
 .VPDocFooter .pager-link {
   border: 1px solid var(--vp-c-divider);
   border-radius: var(--vp-radius-lg);
-  transition:
-    border-color var(--vp-motion-base) var(--vp-ease-out),
-    box-shadow var(--vp-motion-slow) var(--vp-ease-out),
-    transform var(--vp-motion-base) var(--vp-ease-out);
+  transition: border-color 150ms ease, box-shadow 150ms ease;
 }
 
 .VPDocFooter .pager-link:hover {
-  border-color: var(--vp-c-brand-border);
+  border-color: var(--vp-c-brand-1);
   box-shadow: var(--vp-shadow-md);
-  transform: translateY(-2px);
 }

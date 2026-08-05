@@ -1,6 +1,6 @@
 /* ==========================================================================
-   奇沌龙珠 Wiki — 现代化表格
-   吸顶毛玻璃表头、行 hover 品牌渐变、克制的品质/数值着色。
+   奇沌龙珠 Wiki — Apple 风格表格
+   Clean tables with minimal styling, no breathing glows, no scale hover.
    ========================================================================== */
 
 table {
@@ -8,12 +8,12 @@ table {
   border-collapse: separate;
   border-spacing: 0;
   overflow: hidden;
-  border-radius: var(--vp-radius-lg);
+  border-radius: var(--vp-radius-md);
   box-shadow: var(--vp-shadow-sm);
   margin: 20px 0;
 }
 
-/* Sticky header — 毛玻璃吸附 */
+/* Sticky header */
 thead {
   position: sticky;
   top: 0;
@@ -21,9 +21,7 @@ thead {
 }
 
 th {
-  background: var(--vp-c-th-bg);
-  -webkit-backdrop-filter: blur(12px) saturate(160%);
-  backdrop-filter: blur(12px) saturate(160%);
+  background: var(--vp-c-bg-mute);
   color: var(--vp-c-text-2);
   font-weight: 600;
   padding: 13px 14px;
@@ -35,10 +33,10 @@ th {
 }
 
 th:first-child {
-  border-top-left-radius: var(--vp-radius-lg);
+  border-top-left-radius: var(--vp-radius-md);
 }
 th:last-child {
-  border-top-right-radius: var(--vp-radius-lg);
+  border-top-right-radius: var(--vp-radius-md);
 }
 
 td {
@@ -46,7 +44,7 @@ td {
   border-bottom: 1px solid var(--vp-c-divider);
   text-align: center;
   font-size: 0.9rem;
-  transition: background-color var(--vp-motion-fast) var(--vp-ease-out);
+  transition: background 120ms ease;
   color: var(--vp-c-text-1);
 }
 
@@ -54,19 +52,14 @@ tr:last-child td {
   border-bottom: none;
 }
 
-/* 斑马纹 */
+/* Subtle stripe */
 tbody tr:nth-child(even) td {
   background: var(--vp-c-bg-soft);
 }
 
-/* Hover — 品牌色渐变从左向右晕开，克制不晃动 */
+/* Hover — just background change, no scale, no glow */
 tbody tr:hover td {
-  background: linear-gradient(
-    90deg,
-    var(--vp-c-brand-bg) 0%,
-    var(--vp-c-bg-mute) 45%,
-    var(--vp-c-bg-mute) 100%
-  ) !important;
+  background: var(--vp-c-bg-mute) !important;
 }
 
 tr {
@@ -83,9 +76,9 @@ tr:hover {
   z-index: auto;
 }
 
-/* Table wrapper — 圆角与横向滚动 */
+/* Table wrapper */
 .vp-doc .table-wrap {
-  border-radius: var(--vp-radius-lg);
+  border-radius: var(--vp-radius-md);
   overflow-x: auto;
 }
 
@@ -94,12 +87,12 @@ tr:hover {
 }
 
 /* --------------------------------------------------------------------------
-   品质着色 — 仅颜色，不加光晕
+   Quality badges in tables — colors only, no glow
    -------------------------------------------------------------------------- */
 
 .quality-epic,
 td[data-hl="epic"] {
-  color: var(--vp-c-purple);
+  color: #a855f7;
   font-weight: 600;
   text-shadow: none;
 }
@@ -113,7 +106,7 @@ td[data-hl="legendary"] {
 
 .quality-mythic,
 td[data-hl="mythic"] {
-  color: var(--vp-c-yellow);
+  color: #ca8a04;
   font-weight: 700;
   text-shadow: none;
   animation: none;
@@ -134,40 +127,40 @@ td[data-hl="mythic"] {
   color: #facc15;
 }
 
-/* 百分比数值 */
+/* Percentage values */
 td[data-hl="pct"] {
   color: var(--vp-c-brand-1);
   font-weight: 600;
 }
 
-/* 神话品质不加呼吸动画 */
+/* Remove mythic breathe animation */
 .vp-badge.mythic,
 td[data-hl="mythic"] {
   animation: none;
 }
 
-/* 行 hover 时不叠加文字光晕 */
+/* Remove all hover glow effects */
 tbody tr:hover td[data-hl="mythic"],
 tbody tr:hover .quality-mythic {
   text-shadow: none;
 }
 
-/* 评级字母 */
+/* Grade letters */
 td[data-grade] {
   font-weight: 700;
 }
 
 td[data-grade="s"] {
-  color: var(--vp-c-yellow);
+  color: #ca8a04;
   text-shadow: none;
 }
 
 td[data-grade="a"] {
-  color: var(--vp-c-green);
+  color: #22c55e;
 }
 
 td[data-grade="b"] {
-  color: var(--vp-c-blue);
+  color: #3b82f6;
 }
 
 td[data-grade="c"] {
@@ -175,7 +168,7 @@ td[data-grade="c"] {
 }
 
 td[data-grade="d"] {
-  color: var(--vp-c-red);
+  color: #ef4444;
 }
 
 .dark td[data-grade="c"] {
@@ -183,7 +176,7 @@ td[data-grade="d"] {
 }
 
 /* --------------------------------------------------------------------------
-   数值着色
+   Stat highlighting — clean colors, no glow
    -------------------------------------------------------------------------- */
 
 td[data-hl="num"] {
@@ -193,7 +186,7 @@ td[data-hl="num"] {
 
 td[data-hl="str"],
 td[data-hl="hp"] {
-  color: var(--vp-c-red);
+  color: #dc2626;
 }
 .dark td[data-hl="str"],
 .dark td[data-hl="hp"] {
@@ -201,7 +194,7 @@ td[data-hl="hp"] {
 }
 
 td[data-hl="dex"] {
-  color: var(--vp-c-green);
+  color: #16a34a;
 }
 .dark td[data-hl="dex"] {
   color: #4ade80;
@@ -215,7 +208,7 @@ td[data-hl="wil"] {
 }
 
 td[data-hl="end"] {
-  color: var(--vp-c-yellow);
+  color: #ca8a04;
 }
 .dark td[data-hl="end"] {
   color: #fbbf24;
@@ -229,7 +222,7 @@ td[data-hl="ki"] {
 }
 
 /* --------------------------------------------------------------------------
-   KiWeapons 表格 — 列宽控制
+   KiWeapons table — column widths
    -------------------------------------------------------------------------- */
 
 ._Wiki_KiWeapons_气武器 table {
@@ -276,7 +269,7 @@ td[data-hl="ki"] {
 }
 
 /* --------------------------------------------------------------------------
-   种族属性表
+   Race stat tables
    -------------------------------------------------------------------------- */
 
 [class*="_Wiki_race_"] table td:nth-child(2),
@@ -287,15 +280,15 @@ td[data-hl="ki"] {
 }
 
 /* --------------------------------------------------------------------------
-   Wiki 数值高亮（插件生成）
+   Wiki number highlighting (plugin-generated)
    -------------------------------------------------------------------------- */
 
 .kn-stat { color: var(--vp-c-brand-1); font-weight: 600; }
-.kn-pct { color: var(--vp-c-green); font-weight: 600; }
-.kn-resource { color: var(--vp-c-blue); font-weight: 600; }
-.kn-damage { color: var(--vp-c-purple); font-weight: 600; }
-.kn-time { color: var(--vp-c-yellow); font-weight: 600; }
-.kn-neg { color: var(--vp-c-red); font-weight: 600; }
+.kn-pct { color: #16a34a; font-weight: 600; }
+.kn-resource { color: #3b82f6; font-weight: 600; }
+.kn-damage { color: #a855f7; font-weight: 600; }
+.kn-time { color: #ca8a04; font-weight: 600; }
+.kn-neg { color: #dc2626; font-weight: 600; }
 .kn-range { color: #06b6d4; font-weight: 600; }
 
 .dark .kn-pct { color: #4ade80; }
@@ -306,7 +299,7 @@ td[data-hl="ki"] {
 .dark .kn-range { color: #22d3ee; }
 
 /* --------------------------------------------------------------------------
-   移动端横向滚动提示
+   Mobile scroll hint
    -------------------------------------------------------------------------- */
 
 .vp-doc .table-wrap {
@@ -323,7 +316,7 @@ td[data-hl="ki"] {
     width: 24px;
     pointer-events: none;
     background: linear-gradient(270deg, var(--vp-c-bg) 0%, transparent 100%);
-    border-radius: 0 var(--vp-radius-lg) var(--vp-radius-lg) 0;
+    border-radius: 0 var(--vp-radius-md) var(--vp-radius-md) 0;
   }
 }
 
@@ -332,5 +325,5 @@ td[data-hl="ki"] {
    -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   td { transition: none; }
-  tbody tr:hover td { background: var(--vp-c-bg-mute) !important; }
+  tr:hover td { background: var(--vp-c-bg-mute) !important; }
 }

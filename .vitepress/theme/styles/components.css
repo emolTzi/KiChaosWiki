@@ -1,33 +1,23 @@
 /* ==========================================================================
-   奇沌龙珠 Wiki — 现代化组件
-   提示框、按钮、徽章、代码块 — 统一圆角令牌与克制的微交互。
+   奇沌龙珠 Wiki — Apple 风格组件
+   Custom blocks, buttons, code blocks, badges — minimal, clean.
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   Custom Blocks — Info / Tip / Warning / Danger
+   Custom Blocks — Info, Tip, Warning, Danger
    -------------------------------------------------------------------------- */
 
 .custom-block {
-  border-radius: var(--vp-radius-lg);
+  border-radius: var(--vp-radius-md);
   padding: 14px 18px 14px 36px;
   margin: 16px 0;
   position: relative;
   background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
   box-shadow: var(--vp-shadow-sm);
-  transition:
-    box-shadow var(--vp-motion-slow) var(--vp-ease-out),
-    border-color var(--vp-motion-slow) var(--vp-ease-out),
-    transform var(--vp-motion-base) var(--vp-ease-out);
 }
 
-.custom-block:hover {
-  border-color: var(--vp-c-brand-border);
-  box-shadow: var(--vp-shadow-md);
-  transform: translateY(-1px);
-}
-
-/* Emoji 图标 */
+/* Emoji icons */
 .custom-block::before {
   content: '';
   position: absolute;
@@ -44,10 +34,10 @@
 .custom-block.danger::before  { content: '🚫'; }
 
 .custom-block.info {
-  border-left: 3px solid var(--vp-c-blue);
+  border-left: 3px solid #3b82f6;
 }
 .custom-block.info .custom-block-title {
-  color: var(--vp-c-blue);
+  color: #3b82f6;
 }
 
 .custom-block.tip {
@@ -58,21 +48,29 @@
 }
 
 .custom-block.warning {
-  border-left: 3px solid var(--vp-c-yellow);
+  border-left: 3px solid #ca8a04;
 }
 .custom-block.warning .custom-block-title {
-  color: var(--vp-c-yellow);
+  color: #ca8a04;
 }
 
 .custom-block.danger {
-  border-left: 3px solid var(--vp-c-purple);
+  border-left: 3px solid #a855f7;
 }
 .custom-block.danger .custom-block-title {
-  color: var(--vp-c-purple);
+  color: #a855f7;
+}
+
+/* No hover glow */
+.custom-block:hover {
+  box-shadow: none;
+}
+.custom-block:hover::before {
+  transform: none;
 }
 
 /* --------------------------------------------------------------------------
-   Buttons — hover 微浮起 + 光晕，active 按下回弹
+   Buttons
    -------------------------------------------------------------------------- */
 
 :root {
@@ -88,16 +86,11 @@
 }
 
 .VPButton {
-  border-radius: var(--vp-radius-pill) !important;
-  font-weight: 600 !important;
+  border-radius: 980px !important; /* Apple pill */
+  font-weight: 500 !important;
   font-size: 0.9rem !important;
   padding: 8px 22px !important;
-  transition:
-    transform var(--vp-motion-fast) var(--vp-ease-out),
-    box-shadow var(--vp-motion-slow) var(--vp-ease-out),
-    opacity var(--vp-motion-fast) var(--vp-ease-out),
-    background-color var(--vp-motion-fast) var(--vp-ease-out),
-    border-color var(--vp-motion-base) var(--vp-ease-out) !important;
+  transition: opacity 150ms ease !important;
 }
 
 .VPButton.brand {
@@ -106,14 +99,14 @@
 }
 
 .VPButton.brand:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--vp-shadow-brand-hover) !important;
-  opacity: 0.97;
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(232, 85, 0, 0.26) !important;
 }
 
 .VPButton.brand:active {
-  transform: translateY(0) scale(0.96);
-  box-shadow: var(--vp-shadow-brand) !important;
+  opacity: 0.8;
+  transform: none;
 }
 
 .VPButton.alt {
@@ -123,25 +116,18 @@
 }
 
 .VPButton.alt:hover {
-  border-color: var(--vp-c-brand-border) !important;
-  background: var(--vp-c-brand-bg) !important;
-  transform: translateY(-2px);
-  box-shadow: var(--vp-shadow-md);
-}
-
-.VPButton.alt:active {
-  transform: translateY(0) scale(0.96);
-  box-shadow: none;
+  border-color: var(--vp-c-text-3) !important;
+  background: transparent !important;
 }
 
 /* --------------------------------------------------------------------------
-   Badges — 药丸徽章，克制配色
+   Badges — pill style, minimal
    -------------------------------------------------------------------------- */
 
 .vp-badge {
   display: inline-block;
   padding: 2px 10px;
-  border-radius: var(--vp-radius-pill);
+  border-radius: 100px;
   font-size: 0.78em;
   font-weight: 500;
   vertical-align: middle;
@@ -150,7 +136,7 @@
 
 .vp-badge.epic {
   background: rgba(168, 85, 247, 0.1);
-  color: var(--vp-c-purple);
+  color: #a855f7;
 }
 
 .vp-badge.legendary {
@@ -160,21 +146,19 @@
 
 .vp-badge.mythic {
   background: rgba(202, 138, 4, 0.1);
-  color: var(--vp-c-yellow);
+  color: #ca8a04;
   animation: none;
 }
 
 /* --------------------------------------------------------------------------
-   Code blocks — 圆角 + 顶部品牌渐变细线
+   Code blocks
    -------------------------------------------------------------------------- */
 
 .vp-doc div[class*='language-'] {
   border: 1px solid var(--vp-c-divider);
-  border-radius: var(--vp-radius-lg);
+  border-radius: var(--vp-radius-md);
   box-shadow: var(--vp-shadow-sm);
-  transition:
-    box-shadow var(--vp-motion-slow) var(--vp-ease-out),
-    border-color var(--vp-motion-slow) var(--vp-ease-out);
+  transition: box-shadow 150ms ease, border-color 150ms ease;
   position: relative;
   overflow: hidden;
 }
@@ -193,7 +177,7 @@
 }
 
 .vp-doc div[class*='language-']:hover {
-  border-color: var(--vp-c-brand-border);
+  border-color: rgba(232, 85, 0, 0.18);
   box-shadow: var(--vp-shadow-md);
 }
 
@@ -204,14 +188,12 @@
 .vp-doc blockquote {
   border-left: 3px solid var(--vp-c-brand-1);
   background: var(--vp-c-brand-bg);
-  border-radius: 0 var(--vp-radius-lg) var(--vp-radius-lg) 0;
+  border-radius: 0 8px 8px 0;
   padding: 12px 20px;
   margin: 16px 0;
   position: relative;
   overflow: hidden;
-  transition:
-    background-color var(--vp-motion-fast) var(--vp-ease-out),
-    border-color var(--vp-motion-fast) var(--vp-ease-out);
+  transition: background 150ms ease, border-color 150ms ease;
 }
 
 .vp-doc blockquote::before {
@@ -224,37 +206,12 @@
 }
 
 /* --------------------------------------------------------------------------
-   Ki 组件卡片 — 与首页卡片一致的玻璃质感（body 前缀保证胜过 scoped 样式）
-   -------------------------------------------------------------------------- */
-
-body .vp-doc .ki-race-card,
-body .vp-doc .ki-set-effect {
-  background: var(--vp-c-card-bg);
-  -webkit-backdrop-filter: blur(var(--vp-c-glass-blur)) saturate(140%);
-  backdrop-filter: blur(var(--vp-c-glass-blur)) saturate(140%);
-  transition:
-    transform var(--vp-motion-base) var(--vp-ease-out),
-    box-shadow var(--vp-motion-slow) var(--vp-ease-out),
-    border-color var(--vp-motion-slow) var(--vp-ease-out);
-}
-
-body .vp-doc .ki-race-card:hover,
-body .vp-doc .ki-set-effect:hover {
-  transform: translateY(-2px);
-  border-color: var(--vp-c-brand-border);
-  box-shadow: var(--vp-shadow-lg), var(--vp-shadow-brand-hover);
-}
-
-/* --------------------------------------------------------------------------
    Accessibility — reduced motion
    -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   .VPButton,
   .custom-block,
-  .vp-doc div[class*='language-'],
-  body .vp-doc .ki-race-card,
-  body .vp-doc .ki-set-effect {
+  .vp-doc div[class*='language-'] {
     transition: none !important;
-    transform: none !important;
   }
 }
